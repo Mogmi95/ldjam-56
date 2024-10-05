@@ -3,7 +3,7 @@ extends Node2D
 @export var leader: Node2D
 @export var target: Node2D
 @export var minion_numbers = 20
-var minion_scene = preload("res://horde/Minion.tscn")
+var minion_scene = preload("res://minion/Minion.tscn")
 
 var minions = Array()
 
