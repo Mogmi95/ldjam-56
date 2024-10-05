@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://buu55jc3prky7"]
+
+[sub_resource type="Gradient" id="Gradient_bvykd"]
+colors = PackedColorArray(1, 0, 0, 1, 0.141176, 0.141176, 0.141176, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bejcq"]
+gradient = SubResource("Gradient_bvykd")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_857bb"]
+size = Vector2(65, 64)
+
+[node name="AoE" type="Area2D"]
+scale = Vector2(4, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2.38419e-07, 1.90735e-06)
+scale = Vector2(1, 1)
+texture = SubResource("GradientTexture2D_bejcq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_857bb")
