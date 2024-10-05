@@ -1,7 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://bgo5xlu70ifr5"]
+[gd_scene load_steps=18 format=3 uid="uid://bgo5xlu70ifr5"]
 
-[ext_resource type="Texture2D" uid="uid://dlrv5y057l8at" path="res://assets/horde/default_minion.png" id="1_xlgfo"]
 [ext_resource type="Script" path="res://minion/minion.gd" id="1_xslsr"]
+[ext_resource type="Texture2D" uid="uid://bl2o7vhkqj2tl" path="res://assets/chomposaurus/atk.png" id="2_2s38t"]
+[ext_resource type="Texture2D" uid="uid://dr2ahqyjdfpr5" path="res://assets/chomposaurus/dmg.png" id="3_bywlp"]
+[ext_resource type="Texture2D" uid="uid://bs3b5xx7clj2l" path="res://assets/chomposaurus/chomp_idle1.png" id="3_gqqqa"]
+[ext_resource type="Texture2D" uid="uid://cr650ubgqe6r7" path="res://assets/chomposaurus/chomp_idle2.png" id="4_e046a"]
+[ext_resource type="Texture2D" uid="uid://7sjfvmhaog3y" path="res://assets/chomposaurus/chomp_idle3.png" id="5_r2dj1"]
+[ext_resource type="Texture2D" uid="uid://cxfoi0mjkndv2" path="res://assets/chomposaurus/prepare_atk.png" id="6_x8g6d"]
+[ext_resource type="Texture2D" uid="uid://csvuhgc51bib" path="res://assets/chomposaurus/run1.png" id="7_nsx5i"]
+[ext_resource type="Texture2D" uid="uid://dnexhanmmg1rx" path="res://assets/chomposaurus/run2.png" id="8_wssru"]
+[ext_resource type="Texture2D" uid="uid://bjldju0hnm3el" path="res://assets/chomposaurus/run3.png" id="9_bdo55"]
+[ext_resource type="Texture2D" uid="uid://bxqv7wfrrl2k1" path="res://assets/chomposaurus/run4.png" id="10_eekdd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ptiko"]
 radius = 6.255
@@ -92,54 +101,11 @@ _data = {
 [sub_resource type="Curve2D" id="Curve2D_oeu6p"]
 resource_local_to_scene = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_paitv"]
-atlas = ExtResource("1_xlgfo")
-region = Rect2(2040, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dnbpg"]
-atlas = ExtResource("1_xlgfo")
-region = Rect2(2100, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aobvi"]
-atlas = ExtResource("1_xlgfo")
-region = Rect2(2880, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rcucy"]
-atlas = ExtResource("1_xlgfo")
-region = Rect2(1020, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qs6cf"]
-atlas = ExtResource("1_xlgfo")
-region = Rect2(1080, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_do8fb"]
-atlas = ExtResource("1_xlgfo")
-region = Rect2(1920, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_okjrs"]
-atlas = ExtResource("1_xlgfo")
-region = Rect2(0, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cmv5r"]
-atlas = ExtResource("1_xlgfo")
-region = Rect2(60, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nolqb"]
-atlas = ExtResource("1_xlgfo")
-region = Rect2(120, 0, 60, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mwb6g"]
-atlas = ExtResource("1_xlgfo")
-region = Rect2(180, 0, 60, 60)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_un3jw"]
 animations = [{
 "frames": [{
-"duration": 0.6,
-"texture": SubResource("AtlasTexture_paitv")
-}, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dnbpg")
+"texture": ExtResource("2_2s38t")
 }],
 "loop": true,
 "name": &"attack",
@@ -147,47 +113,53 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aobvi")
+"texture": ExtResource("3_bywlp")
 }],
 "loop": true,
 "name": &"damaged",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rcucy")
+"texture": ExtResource("3_gqqqa")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qs6cf")
+"texture": ExtResource("4_e046a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r2dj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e046a")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_do8fb")
+"texture": ExtResource("6_x8g6d")
 }],
 "loop": false,
 "name": &"prepare_attack",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_okjrs")
+"texture": ExtResource("7_nsx5i")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cmv5r")
+"texture": ExtResource("8_wssru")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nolqb")
+"texture": ExtResource("9_bdo55")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mwb6g")
+"texture": ExtResource("10_eekdd")
 }],
 "loop": true,
 "name": &"walk",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7a2a"]
@@ -219,7 +191,8 @@ curve = SubResource("Curve2D_oeu6p")
 loop = false
 
 [node name="MinionSprite" type="AnimatedSprite2D" parent="PathToTarget/PathFollow2D"]
-scale = Vector2(2, 2)
+position = Vector2(-5, 3)
+scale = Vector2(0.349609, 0.352384)
 sprite_frames = SubResource("SpriteFrames_un3jw")
 animation = &"prepare_attack"
 autoplay = "idle"
