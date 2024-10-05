@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://4cioi3e5nivi"]
+
+[ext_resource type="Texture2D" uid="uid://bdit5pbfbtqwt" path="res://assets/levels/bg-lvl1.jpg" id="1_fk0nx"]
+[ext_resource type="Texture2D" uid="uid://dyppdrh8jg66m" path="res://assets/levels/fg-lvl1.png" id="2_rxve8"]
+
+[node name="Level1" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+texture = ExtResource("1_fk0nx")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(0, 105)
+scale = Vector2(1.47296, 1.28067)
+texture = ExtResource("2_rxve8")
+centered = false
