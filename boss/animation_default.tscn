@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://3v4e7lsewuk0"]
+
+[ext_resource type="Texture2D" uid="uid://bcgojncvju7mv" path="res://assets/cathy_attack.png" id="1_dyuja"]
+[ext_resource type="Texture2D" uid="uid://b4xo7jgmeqih0" path="res://assets/cathy_crouch.png" id="2_olsja"]
+[ext_resource type="Texture2D" uid="uid://brhl63547miy2" path="res://assets/cathy_idle1.png" id="3_vtjtk"]
+[ext_resource type="Texture2D" uid="uid://c2fe2ql7pm5xt" path="res://assets/cathy_idle2.png" id="4_cfxyr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eapgv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dyuja")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_olsja")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vtjtk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cfxyr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+position = Vector2(2, -118)
+sprite_frames = SubResource("SpriteFrames_eapgv")
+animation = &"idle"

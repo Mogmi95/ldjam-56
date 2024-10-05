@@ -17,7 +17,6 @@ scale = Vector2(4, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2.38419e-07, 1.90735e-06)
-scale = Vector2(1, 1)
 texture = SubResource("GradientTexture2D_bejcq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,50 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgmxka3ris8ev"]
+[gd_scene load_steps=5 format=3 uid="uid://bgmxka3ris8ev"]
 
-[ext_resource type="Texture2D" uid="uid://brhl63547miy2" path="res://assets/cathy_idle1.png" id="1_wuidh"]
 [ext_resource type="Script" path="res://boss/boss.gd" id="1_xhah5"]
-[ext_resource type="Texture2D" uid="uid://c2fe2ql7pm5xt" path="res://assets/cathy_idle2.png" id="2_ivsb7"]
-[ext_resource type="Texture2D" uid="uid://b4xo7jgmeqih0" path="res://assets/cathy_crouch.png" id="2_l8hl3"]
-[ext_resource type="Texture2D" uid="uid://bcgojncvju7mv" path="res://assets/cathy_attack.png" id="2_q8jfx"]
+[ext_resource type="PackedScene" uid="uid://3v4e7lsewuk0" path="res://boss/animation_default.tscn" id="2_ci248"]
+[ext_resource type="PackedScene" uid="uid://dv2mq7sqhekfp" path="res://boss/behavior_default.tscn" id="2_ocjub"]
 [ext_resource type="PackedScene" uid="uid://buu55jc3prky7" path="res://boss/aoe.tscn" id="5_dxo80"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qa7xe"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_q8jfx")
-}],
-"loop": true,
-"name": &"attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_l8hl3")
-}],
-"loop": true,
-"name": &"crouch",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_wuidh")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_ivsb7")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 6.0
-}]
 
 [node name="Boss" type="Node2D"]
 position = Vector2(648, 393)
 script = ExtResource("1_xhah5")
+BehaviorScene = ExtResource("2_ocjub")
+AnimationScene = ExtResource("2_ci248")
 metadata/_edit_group_ = true
 
 [node name="AoE" parent="." instance=ExtResource("5_dxo80")]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2, -118)
-sprite_frames = SubResource("SpriteFrames_qa7xe")
-animation = &"idle"
