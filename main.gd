@@ -15,12 +15,13 @@ func _process(delta: float) -> void:
 
 
 func new_game() -> void:
-    level_nbr = 1
+    level_nbr = 2
     load_level(level_nbr)
 
 func load_level(lvl_nbr: int) -> void:
     if current_level_sc:
         remove_child(current_level_sc)
     current_level_sc = load("res://levels/level_%s.tscn" % lvl_nbr).instantiate()
-    $CameraCollision.should_camera_move = current_level_sc.should_camera_move
+    $CameraCollision.set_movement_and_back_collision(current_level_sc.should_camera_move)
+    $Player.set_boundaries(not current_level_sc.should_camera_move, current_level_sc.clamp_y)
     add_child(current_level_sc)

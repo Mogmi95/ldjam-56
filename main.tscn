@@ -17,6 +17,5 @@ position = Vector2(559, 372)
 leader = NodePath("../Player")
 
 [node name="CameraCollision" parent="." instance=ExtResource("4_ysbqa")]
-speed = 2.5
 
 [node name="HUD" parent="." instance=ExtResource("5_j7bnl")]
