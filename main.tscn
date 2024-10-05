@@ -11,3 +11,4 @@ position = Vector2(623, 355)
 [node name="Horde" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_whvwy")]
 position = Vector2(559, 372)
 target = NodePath("../Player")
+minion_numbers = 20

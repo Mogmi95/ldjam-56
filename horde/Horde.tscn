@@ -5,3 +5,4 @@
 [node name="Horde" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_n5j6g")
+minion_numbers = 1
