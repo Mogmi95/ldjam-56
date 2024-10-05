@@ -26,6 +26,9 @@ position = Vector2(656, 397)
 script = ExtResource("1_4woou")
 BehaviorScene = ExtResource("2_476tj")
 AnimationScene = ExtResource("3_20lnd")
+apm = 30.0
+aoe_range = 100
+aoe_size = Vector2(4, 1)
 
 [node name="AoE" parent="." instance=ExtResource("4_am3aw")]
 scale = Vector2(1, 1)

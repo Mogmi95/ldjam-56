@@ -23,6 +23,11 @@ func _on_attack_timer_timeout() -> void:
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
+func _on_mob_died() -> void:
+    Signals.food_spawned.emit(_food_drop, get_parent().global_position)
+#end
+
+#-----------------------------------------------------------------------------------------------------------------------
 func _prepare_attack() -> void:
     preparing_attack.emit()
     $PreparationTimer.start(1.0)
