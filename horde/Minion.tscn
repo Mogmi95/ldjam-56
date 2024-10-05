@@ -1,7 +1,108 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgo5xlu70ifr5"]
+[gd_scene load_steps=19 format=3 uid="uid://bgo5xlu70ifr5"]
 
 [ext_resource type="Texture2D" uid="uid://dlrv5y057l8at" path="res://assets/horde/default_minion.png" id="1_xlgfo"]
 [ext_resource type="Script" path="res://horde/minion.gd" id="1_xslsr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ptiko"]
+radius = 6.255
+
+[sub_resource type="Animation" id="Animation_yefpy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathToTarget/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PathToTarget/PathFollow2D/MinionSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"prepare_attack"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PathToTarget/PathFollow2D/MinionSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_83ubn"]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathToTarget/PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PathToTarget/PathFollow2D/MinionSprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [&"attack", &"damaged", &"idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PathToTarget/PathFollow2D/MinionSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(2896.31),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_alsmm"]
+_data = {
+"RESET": SubResource("Animation_yefpy"),
+"atak": SubResource("Animation_83ubn")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_oeu6p"]
+resource_local_to_scene = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paitv"]
+atlas = ExtResource("1_xlgfo")
+region = Rect2(2040, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnbpg"]
+atlas = ExtResource("1_xlgfo")
+region = Rect2(2100, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aobvi"]
+atlas = ExtResource("1_xlgfo")
+region = Rect2(2880, 0, 60, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcucy"]
 atlas = ExtResource("1_xlgfo")
@@ -10,6 +111,10 @@ region = Rect2(1020, 0, 60, 60)
 [sub_resource type="AtlasTexture" id="AtlasTexture_qs6cf"]
 atlas = ExtResource("1_xlgfo")
 region = Rect2(1080, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do8fb"]
+atlas = ExtResource("1_xlgfo")
+region = Rect2(1920, 0, 60, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_okjrs"]
 atlas = ExtResource("1_xlgfo")
@@ -30,6 +135,25 @@ region = Rect2(180, 0, 60, 60)
 [sub_resource type="SpriteFrames" id="SpriteFrames_un3jw"]
 animations = [{
 "frames": [{
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_paitv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnbpg")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aobvi")
+}],
+"loop": true,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rcucy")
 }, {
@@ -38,6 +162,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do8fb")
+}],
+"loop": false,
+"name": &"prepare_attack",
 "speed": 5.0
 }, {
 "frames": [{
@@ -58,18 +190,38 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ptiko"]
-radius = 6.255
-
 [node name="Minion" type="CharacterBody2D"]
-scale = Vector2(4, 4)
 script = ExtResource("1_xslsr")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.75, 0)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_ptiko")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PrepareAttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_alsmm")
+}
+
+[node name="PathToTarget" type="Path2D" parent="."]
+curve = SubResource("Curve2D_oeu6p")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathToTarget"]
+loop = false
+
+[node name="MinionSprite" type="AnimatedSprite2D" parent="PathToTarget/PathFollow2D"]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_un3jw")
-animation = &"idle"
+animation = &"prepare_attack"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, -0.25)
-shape = SubResource("CircleShape2D_ptiko")
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="PrepareAttackTimer" to="." method="_on_prepare_attack_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
