@@ -4,36 +4,34 @@ class_name Boss
 
 #-----------------------------------------------------------------------------------------------------------------------
 @export var BehaviorScene: PackedScene
+@export var AnimationScene: PackedScene
 @export var apm = 30.0
 @export var hit_points = 500
 @export var aoe_range = 100
+@export var aoe_size = Vector2(4, 1)
 
 var _behavior: BehaviorInterface
+var _animation: AnimatedSprite2D
 
 #-----------------------------------------------------------------------------------------------------------------------
 func _ready() -> void:
-    ## FIX ME: why can´t we set scene files in editor's inspector
-    #behavior = BehaviorScene.instantiate()
-    _behavior = preload("res://boss/behavior_default.tscn").instantiate()
+    _animation = AnimationScene.instantiate()
+    _animation.z_index = 1
+    add_child(_animation)
 
+    _behavior = BehaviorScene.instantiate()
     _behavior.set_apm(apm)
     _behavior.idling.connect(_on_behavior_idling)
     _behavior.preparing_attack.connect(_on_behavior_preparing_attack)
     _behavior.attacking.connect(_on_behavior_attacking)
-
     add_child(_behavior)
 
-    _on_behavior_idling()
-#end
-
-#-----------------------------------------------------------------------------------------------------------------------
-func _process(delta: float) -> void:
-    delta = delta
+    $AoE.scale = aoe_size
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
 func _on_behavior_idling() -> void:
-    $AnimatedSprite2D.play("idle")
+    _animation.play("idle")
 
     $AoE/CollisionShape2D.hide();
     $AoE.hide();
@@ -43,10 +41,10 @@ func _on_behavior_idling() -> void:
 func _on_behavior_preparing_attack() -> void:
     _randomize_AoE_position()
 
-    $AnimatedSprite2D.play("crouch")
+    _animation.play("crouch")
 
     if $AoE.position.x != 0:
-        $AnimatedSprite2D.flip_h = $AoE.position.x < 0
+        _animation.flip_h = $AoE.position.x < 0
 
     $AoE/Sprite2D.texture.gradient.set_color(0, Color(1, 1, 0))
     $AoE.show()
@@ -54,11 +52,10 @@ func _on_behavior_preparing_attack() -> void:
 
 #-----------------------------------------------------------------------------------------------------------------------
 func _on_behavior_attacking() -> void:
-    $AnimatedSprite2D.play("attack")
+    _animation.play("attack")
 
     $AoE/Sprite2D.texture.gradient.set_color(0, Color(1, 0, 0))
     $AoE/CollisionShape2D.show();
-
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
