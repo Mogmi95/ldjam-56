@@ -34,6 +34,7 @@ aoe_size = Vector2(4, 1)
 scale = Vector2(1, 1)
 
 [node name="Healthbar" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -505.0

@@ -5,6 +5,7 @@ class_name Boss
 #-----------------------------------------------------------------------------------------------------------------------
 @export var BehaviorScene: PackedScene
 @export var AnimationScene: PackedScene
+@export var show_healthbar = false
 @export var apm = 0.0
 @export var hit_points = 10
 @export var aoe_range = 0
@@ -31,6 +32,11 @@ func _ready() -> void:
 
     _current_hp = hit_points
     $AoE.scale = aoe_size
+
+    $Healthbar.show()
+
+    if show_healthbar:
+        $Healthbar.show()
 
     Signals.mob_hurt.connect(_on_signals_mob_hurt)
 #end
