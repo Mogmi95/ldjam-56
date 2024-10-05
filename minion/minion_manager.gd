@@ -11,6 +11,7 @@ var minions = Array()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Signals.minion_hurt.connect(_on_minion_hurt)
+    Signals.food_consumed.connect(_on_food_consumed)
     # TODO: Find a way to emit minion_number_change
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,6 +48,9 @@ func _on_minion_hurt(minion: Node):
     # TODO check that the minion is real, remove it from the list
     minion.die()
     _emit_number_change()
+
+func _on_food_consumed(food: Node):
+    _spawn(food.global_position - global_position)
 
 func _emit_number_change() -> void:
     Signals.minions_number_changed.emit(minions.size())

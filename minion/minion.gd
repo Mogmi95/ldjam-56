@@ -83,7 +83,6 @@ func die():
 
 func _on_attack_timer_timeout() -> void:
     if target != null:
-        Signals.mob_hurt.emit(target)
         state = State.PREPARE_ATTACK
         sprite.animation = "prepare_attack"
         $PrepareAttackTimer.start(DURATION_PREPARE_ATTACK)
@@ -97,9 +96,11 @@ func _on_prepare_attack_timer_timeout() -> void:
         $AnimationPlayer.play("atak")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+    Signals.mob_hurt.emit(target)
     state = State.IDLE
     $AttackTimer.start(2.0)
     $PathToTarget/PathFollow2D.rotation = 0
+    $PathToTarget.curve.clear_points()
     start_random_attack_timer()
 
 
