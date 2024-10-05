@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c75aiqjam1ux5"]
+
+[ext_resource type="Shader" path="res://assets/sidescroll/scroll.gdshader" id="1_a5abs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbcp0"]
+resource_local_to_scene = true
+shader = ExtResource("1_a5abs")
+shader_parameter/scroll_speed = 3.0
+
+[node name="ScrollingBackground" type="TextureRect"]
+material = SubResource("ShaderMaterial_gbcp0")
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 1

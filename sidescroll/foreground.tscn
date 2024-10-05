@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsovyaumd7t5a"]
+
+[ext_resource type="PackedScene" uid="uid://c75aiqjam1ux5" path="res://sidescroll/scrolling_background.tscn" id="1_ej4tj"]
+[ext_resource type="Shader" path="res://assets/sidescroll/scroll.gdshader" id="2_67wsq"]
+[ext_resource type="Texture2D" uid="uid://5l7ts8raop8l" path="res://assets/sidescroll/fg.png" id="3_4u8b5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ictki"]
+resource_local_to_scene = true
+shader = ExtResource("2_67wsq")
+shader_parameter/scroll_speed = 0.3
+
+[node name="Foreground" type="Node2D"]
+
+[node name="ScrollingBackground" parent="." instance=ExtResource("1_ej4tj")]
+material = SubResource("ShaderMaterial_ictki")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 1280.0
+offset_bottom = 258.0
+grow_vertical = 0
+texture = ExtResource("3_4u8b5")
