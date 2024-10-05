@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 
 
 func new_game() -> void:
-    level_nbr = 2
+    level_nbr = 1
     load_level(level_nbr)
 
 func load_level(lvl_nbr: int) -> void:
