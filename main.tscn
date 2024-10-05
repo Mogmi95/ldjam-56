@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmewexqdotm0u"]
+[gd_scene load_steps=6 format=3 uid="uid://c3kch8yodx84h"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1vjo6"]
 [ext_resource type="PackedScene" uid="uid://mc77u87jftr" path="res://player/player.tscn" id="1_8m0ob"]
 [ext_resource type="PackedScene" uid="uid://cskrmvq8iku8t" path="res://horde/Horde.tscn" id="2_whvwy"]
-[ext_resource type="Script" path="res://camera/camera_2d.gd" id="4_n5bk1"]
-[ext_resource type="PackedScene" uid="uid://bxpogcnmtsowy" path="res://Target.tscn" id="5_dcc7k"]
+[ext_resource type="PackedScene" uid="uid://bl2kbhcd0qdd1" path="res://camera/camera_collision.tscn" id="4_ysbqa"]
+[ext_resource type="PackedScene" uid="uid://k5d3jg38igg2" path="res://hud/hud.tscn" id="5_j7bnl"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_1vjo6")
@@ -12,14 +12,10 @@ script = ExtResource("1_1vjo6")
 [node name="Player" parent="." instance=ExtResource("1_8m0ob")]
 position = Vector2(623, 355)
 
-[node name="Horde" parent="." node_paths=PackedStringArray("leader", "target") instance=ExtResource("2_whvwy")]
+[node name="Horde" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_whvwy")]
 position = Vector2(559, 372)
 leader = NodePath("../Player")
-target = NodePath("../Target")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-script = ExtResource("4_n5bk1")
+[node name="CameraCollision" parent="." instance=ExtResource("4_ysbqa")]
 
-[node name="Target" parent="." instance=ExtResource("5_dcc7k")]
-position = Vector2(888, 293)
+[node name="HUD" parent="." instance=ExtResource("5_j7bnl")]

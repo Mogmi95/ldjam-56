@@ -13,6 +13,7 @@ func _ready() -> void:
         _spawn(generate_new_minion_position())
 
     Signals.minion_hurt.connect(_on_minion_hurt)
+    # TODO: Find a way to emit minion_number_change
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -38,3 +39,7 @@ func _spawn(position: Vector2):
 func _on_minion_hurt(minion: Node):
     # TODO check that the minion is real, remove it from the list
     minion.die()
+    _emit_number_change()
+
+func _emit_number_change() -> void:
+    Signals.minions_number_changed.emit(minions.size())
