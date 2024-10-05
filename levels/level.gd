@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var should_camera_move: bool
+@export var minimum_number_of_minions: int = 1
 # y Min, y Max
 @export var clamp_y: Vector2i
 @export var ending_x: int

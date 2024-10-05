@@ -2,13 +2,13 @@ extends Node
 
 signal food_spawned(count: int, position: Vector2)
 
-signal food_consumed(position: Vector2)
+signal food_consumed(food: Node)
 
 signal minion_hurt(minion: Node, source: Node)
 
 signal minions_number_changed(nbr: int)
 
-signal mob_hurt()
+signal mob_hurt(mob: Node)
 
 signal mob_died(mob: Node)
 

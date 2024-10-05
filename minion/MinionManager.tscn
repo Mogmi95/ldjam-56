@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cskrmvq8iku8t"]
+
+[ext_resource type="Script" path="res://minion/minion_manager.gd" id="1_n5j6g"]
+
+[node name="MinionManager" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_n5j6g")
