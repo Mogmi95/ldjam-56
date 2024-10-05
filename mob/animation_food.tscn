@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dml8w82bj0e57"]
+
+[ext_resource type="Texture2D" uid="uid://j3q7wjmt8p5b" path="res://assets/gigot.png" id="1_14c5e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4bgb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_14c5e")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Sprite2D" type="AnimatedSprite2D"]
+scale = Vector2(0.1, 0.108)
+sprite_frames = SubResource("SpriteFrames_h4bgb")
+animation = &"idle"

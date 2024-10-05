@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc3aj8tuw7ss"]
+
+[ext_resource type="Script" path="res://mob/behavior_food.gd" id="1_frfxq"]
+
+[node name="BehaviorFood" type="Node"]
+script = ExtResource("1_frfxq")
