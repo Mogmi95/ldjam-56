@@ -13,6 +13,7 @@ func _ready() -> void:
         _spawn(generate_new_minion_position())
 
     Signals.minion_hurt.connect(_on_minion_hurt)
+    # TODO: Find a way to emit minion_number_change
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
