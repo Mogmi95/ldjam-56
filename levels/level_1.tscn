@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://4cioi3e5nivi"]
+[gd_scene load_steps=5 format=3 uid="uid://4cioi3e5nivi"]
 
 [ext_resource type="Texture2D" uid="uid://bdit5pbfbtqwt" path="res://assets/levels/bg-lvl1.jpg" id="1_fk0nx"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_qoqef"]
 [ext_resource type="Texture2D" uid="uid://dyppdrh8jg66m" path="res://assets/levels/fg-lvl1.png" id="2_rxve8"]
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jg2d2"]
+b = Vector2(0, 720)
+
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_qoqef")
 should_camera_move = true
 clamp_y = Vector2i(150, 720)
+ending_x = 6400
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -23,3 +27,10 @@ position = Vector2(0, 105)
 scale = Vector2(1.47296, 1.28067)
 texture = ExtResource("2_rxve8")
 centered = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_jg2d2")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

@@ -12,6 +12,7 @@ signal mob_hurt()
 
 signal mob_died(mob: Node)
 
+signal level_ended()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

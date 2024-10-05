@@ -4,11 +4,13 @@ extends Node2D
 var screen_size
 var level_boundaries: Vector2i
 var clamp_x: bool
+var last_x: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     screen_size = get_viewport_rect().size
     level_boundaries = Vector2i(0, screen_size.y)
+    last_x = 0
     clamp_x = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,8 +31,10 @@ func _process(delta: float) -> void:
     position += velocity * delta
     position.y = clampi(position.y, level_boundaries.x, level_boundaries.y)
     if clamp_x:
-        position.x = clampi(position.x, 0, screen_size.x)
+        position.x = clampi(position.x, last_x, last_x + screen_size.x)
 
-func set_boundaries(xclamp: bool, y_boundaries: Vector2i) -> void:
+
+func set_boundaries(xclamp: bool, y_boundaries: Vector2i, xlast: int) -> void:
     level_boundaries = y_boundaries
     clamp_x = xclamp
+    last_x = xlast

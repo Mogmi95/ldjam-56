@@ -11,4 +11,4 @@ func _process(delta) -> void:
 
 func set_movement_and_back_collision(should_move: bool) -> void:
     should_camera_move = should_move
-    $Area2D/CollisionShape2D.disabled = not should_move
+    $Area2D/CollisionShape2D.set_deferred("disabled", not should_move)
