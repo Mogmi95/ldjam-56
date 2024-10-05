@@ -82,7 +82,7 @@ func die():
 
 func _on_attack_timer_timeout() -> void:
     if target != null:
-        # TODO emit() damage signal
+        Signals.boss_hurt.emit()
         state = State.PREPARE_ATTACK
         sprite.animation = "prepare_attack"
         $PrepareAttackTimer.start(DURATION_PREPARE_ATTACK)
