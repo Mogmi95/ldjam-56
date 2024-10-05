@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://bgo5xlu70ifr5"]
+
+[ext_resource type="Texture2D" uid="uid://dlrv5y057l8at" path="res://assets/horde/default_minion.png" id="1_xlgfo"]
+[ext_resource type="Script" path="res://horde/minion.gd" id="1_xslsr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcucy"]
+atlas = ExtResource("1_xlgfo")
+region = Rect2(1020, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs6cf"]
+atlas = ExtResource("1_xlgfo")
+region = Rect2(1080, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okjrs"]
+atlas = ExtResource("1_xlgfo")
+region = Rect2(0, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmv5r"]
+atlas = ExtResource("1_xlgfo")
+region = Rect2(60, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nolqb"]
+atlas = ExtResource("1_xlgfo")
+region = Rect2(120, 0, 60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mwb6g"]
+atlas = ExtResource("1_xlgfo")
+region = Rect2(180, 0, 60, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_un3jw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcucy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs6cf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okjrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmv5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nolqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mwb6g")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ptiko"]
+radius = 6.255
+
+[node name="Minion" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_xslsr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_un3jw")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -0.25)
+shape = SubResource("CircleShape2D_ptiko")

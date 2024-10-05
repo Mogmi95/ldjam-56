@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var speed = 400
+@export var speed = 450
 var screen_size
 
 # Called when the node enters the scene tree for the first time.
