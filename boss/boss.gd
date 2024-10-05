@@ -8,24 +8,25 @@ class_name Boss
 @export var apm = 30.0
 @export var hit_points = 500
 @export var aoe_range = 100
+@export var aoe_size = Vector2(4, 1)
 
 var _behavior: BehaviorInterface
 var _animation: AnimatedSprite2D
 
 #-----------------------------------------------------------------------------------------------------------------------
-func _init() -> void:
-    ## FIX ME: why can´t we set scene files in editor's inspector
-    #behavior = BehaviorScene.instantiate()
-    _behavior = preload("res://boss/behavior_default.tscn").instantiate()
+func _ready() -> void:
+    _animation = AnimationScene.instantiate()
+    _animation.z_index = 1
+    add_child(_animation)
+
+    _behavior = BehaviorScene.instantiate()
     _behavior.set_apm(apm)
     _behavior.idling.connect(_on_behavior_idling)
     _behavior.preparing_attack.connect(_on_behavior_preparing_attack)
     _behavior.attacking.connect(_on_behavior_attacking)
     add_child(_behavior)
 
-    _animation = preload("res://boss/animation_default.tscn").instantiate()
-    _animation.z_index = 1
-    add_child(_animation)
+    $AoE.scale = aoe_size
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------

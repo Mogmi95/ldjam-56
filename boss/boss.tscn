@@ -13,3 +13,4 @@ AnimationScene = ExtResource("2_ci248")
 metadata/_edit_group_ = true
 
 [node name="AoE" parent="." instance=ExtResource("5_dxo80")]
+scale = Vector2(1, 1)
