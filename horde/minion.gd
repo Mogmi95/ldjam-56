@@ -77,6 +77,9 @@ func set_target(new_target: Node2D):
 func start_random_attack_timer():
     $AttackTimer.start(randf_range(1, 3))
 
+func die():
+    hide()
+
 func _on_attack_timer_timeout() -> void:
     if target != null:
         # TODO emit() damage signal
@@ -90,8 +93,6 @@ func _on_prepare_attack_timer_timeout() -> void:
     $PathToTarget.curve.add_point(Vector2(0, 0))
     $PathToTarget.curve.add_point(target.global_position - global_position)
     $AnimationPlayer.play("atak")
-
-
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
     state = State.IDLE

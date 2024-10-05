@@ -10,12 +10,9 @@ var minions = Array()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     for i in range(0, minion_numbers):
-        var minion = minion_scene.instantiate()
-        minion.position = generate_new_minion_position()
-        minion.set_leader(leader)
-        minion.set_target(target)
-        minions.append(minion)
-        add_child(minion)
+        _spawn(generate_new_minion_position())
+
+    Signals.minion_hurt.connect(_on_minion_hurt)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,3 +25,16 @@ func generate_new_minion_position():
         var last_minion = minions[-1]
         new_position = last_minion.position + Vector2(0.01, 0.01)
     return new_position
+
+func _spawn(position: Vector2):
+    var minion = minion_scene.instantiate()
+    minion.position = position
+    minion.set_leader(leader)
+    minion.set_target(target)
+    minions.append(minion)
+    add_child(minion)
+    return minion
+
+func _on_minion_hurt(minion: Node):
+    # TODO check that the minion is real, remove it from the list
+    minion.die()
