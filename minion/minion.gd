@@ -25,7 +25,6 @@ var last_traveled_distances = Array()
 func _ready() -> void:
     sprite = $PathToTarget/PathFollow2D/MinionSprite
     last_position = global_position
-    start_random_attack_timer()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
@@ -73,6 +72,8 @@ func set_leader(new_leader: Node2D):
 
 func set_target(new_target: Node2D):
     self.target = new_target
+    if target != null:
+        start_random_attack_timer()
 
 func start_random_attack_timer():
     $AttackTimer.start(randf_range(1, 3))
@@ -82,20 +83,29 @@ func die():
 
 func _on_attack_timer_timeout() -> void:
     if target != null:
-        Signals.boss_hurt.emit()
+        Signals.mob_hurt.emit(target)
         state = State.PREPARE_ATTACK
         sprite.animation = "prepare_attack"
         $PrepareAttackTimer.start(DURATION_PREPARE_ATTACK)
 
 func _on_prepare_attack_timer_timeout() -> void:
-    state = State.ATTACK
-    $PathToTarget.curve.clear_points()
-    $PathToTarget.curve.add_point(Vector2(0, 0))
-    $PathToTarget.curve.add_point(target.global_position - global_position)
-    $AnimationPlayer.play("atak")
+    if target != null:
+        state = State.ATTACK
+        $PathToTarget.curve.clear_points()
+        $PathToTarget.curve.add_point(Vector2(0, 0))
+        $PathToTarget.curve.add_point(target.global_position - global_position)
+        $AnimationPlayer.play("atak")
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
     state = State.IDLE
     $AttackTimer.start(2.0)
     $PathToTarget/PathFollow2D.rotation = 0
     start_random_attack_timer()
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+    set_target(area.get_parent())
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+    set_target(null)

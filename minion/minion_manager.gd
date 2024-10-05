@@ -2,22 +2,29 @@ extends Node2D
 
 @export var leader: Node2D
 @export var target: Node2D
-@export var minion_numbers = 20
+
+var minimum_number_of_minions
 var minion_scene = preload("res://minion/Minion.tscn")
 
 var minions = Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    for i in range(0, minion_numbers):
-        _spawn(generate_new_minion_position())
-
     Signals.minion_hurt.connect(_on_minion_hurt)
     # TODO: Find a way to emit minion_number_change
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     pass
+
+func set_minimum_number_of_minions(min_number_of_minions: int):
+    minimum_number_of_minions = min_number_of_minions
+    _spawn_minimum_number_of_minions()
+
+func _spawn_minimum_number_of_minions():
+    if minions.size() < minimum_number_of_minions:
+        for i in range(minions.size(), minimum_number_of_minions):
+            _spawn(generate_new_minion_position())
 
 # Find an empty space to spawn a new minion
 func generate_new_minion_position():

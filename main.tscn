@@ -12,7 +12,7 @@ script = ExtResource("1_1vjo6")
 [node name="Player" parent="." instance=ExtResource("1_8m0ob")]
 position = Vector2(623, 355)
 
-[node name="Horde" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_whvwy")]
+[node name="MinionManager" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_whvwy")]
 position = Vector2(559, 372)
 leader = NodePath("../Player")
 

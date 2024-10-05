@@ -8,7 +8,7 @@ signal minion_hurt(minion: Node, source: Node)
 
 signal minions_number_changed(nbr: int)
 
-signal mob_hurt()
+signal mob_hurt(mob: Node)
 
 signal mob_died(mob: Node)
 
