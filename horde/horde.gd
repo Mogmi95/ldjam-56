@@ -38,3 +38,7 @@ func _spawn(position: Vector2):
 func _on_minion_hurt(minion: Node):
     # TODO check that the minion is real, remove it from the list
     minion.die()
+    _emit_number_change()
+
+func _emit_number_change() -> void:
+    Signals.minions_number_changed.emit(minions.size())
