@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlji31rktlpcp"]
+[gd_scene load_steps=4 format=3 uid="uid://dlji31rktlpcp"]
 
 [ext_resource type="Texture2D" uid="uid://c7a0gr21ee8at" path="res://assets/levels/bg-lvl2.jpg" id="1_7xb1r"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_20k1q"]
 [ext_resource type="Texture2D" uid="uid://bda3gfri1pau3" path="res://assets/levels/fg-lvl2.png" id="2_8y0ih"]
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_20k1q")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

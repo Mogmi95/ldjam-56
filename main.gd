@@ -22,4 +22,5 @@ func load_level(lvl_nbr: int) -> void:
     if current_level_sc:
         remove_child(current_level_sc)
     current_level_sc = load("res://levels/level_%s.tscn" % lvl_nbr).instantiate()
+    $CameraCollision.should_camera_move = current_level_sc.should_camera_move
     add_child(current_level_sc)
