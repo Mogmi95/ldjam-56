@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://bgo5xlu70ifr5"]
 
-[ext_resource type="Script" path="res://horde/minion.gd" id="1_xslsr"]
+[ext_resource type="Script" path="res://minion/minion.gd" id="1_xslsr"]
 [ext_resource type="Texture2D" uid="uid://bl2o7vhkqj2tl" path="res://assets/chomposaurus/atk.png" id="2_2s38t"]
 [ext_resource type="Texture2D" uid="uid://dr2ahqyjdfpr5" path="res://assets/chomposaurus/dmg.png" id="3_bywlp"]
 [ext_resource type="Texture2D" uid="uid://bs3b5xx7clj2l" path="res://assets/chomposaurus/chomp_idle1.png" id="3_gqqqa"]
