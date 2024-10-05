@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmewexqdotm0u"]
+[gd_scene load_steps=5 format=3 uid="uid://c3kch8yodx84h"]
 
 [ext_resource type="PackedScene" uid="uid://mc77u87jftr" path="res://player/player.tscn" id="1_8m0ob"]
+[ext_resource type="PackedScene" uid="uid://dsovyaumd7t5a" path="res://sidescroll/foreground.tscn" id="2_nfkrw"]
 [ext_resource type="PackedScene" uid="uid://cskrmvq8iku8t" path="res://horde/Horde.tscn" id="2_whvwy"]
+[ext_resource type="PackedScene" uid="uid://beddcty3pq1ne" path="res://sidescroll/background.tscn" id="3_yfh5j"]
 
 [node name="Main" type="Node"]
+
+[node name="Background" parent="." instance=ExtResource("3_yfh5j")]
+
+[node name="Foreground" parent="." instance=ExtResource("2_nfkrw")]
+position = Vector2(0, 516)
 
 [node name="Player" parent="." instance=ExtResource("1_8m0ob")]
 position = Vector2(623, 355)
