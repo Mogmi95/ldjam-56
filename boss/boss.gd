@@ -3,24 +3,25 @@ extends Node2D
 class_name Boss
 
 #-----------------------------------------------------------------------------------------------------------------------
-const AOE_OFFSET = 100
-
-#-----------------------------------------------------------------------------------------------------------------------
-@export var behavior_scene: PackedScene
+@export var BehaviorScene: PackedScene
 @export var apm = 30.0
 @export var hit_points = 500
+@export var aoe_range = 100
+
+var _behavior: BehaviorInterface
 
 #-----------------------------------------------------------------------------------------------------------------------
 func _ready() -> void:
-    behavior_scene = preload("res://boss/behavior.tscn")
-    var behavior = behavior_scene.instantiate()
+    ## FIX ME: why can´t we set scene files in editor's inspector
+    #behavior = BehaviorScene.instantiate()
+    _behavior = preload("res://boss/behavior_default.tscn").instantiate()
 
-    behavior.set_apm(apm)
-    behavior.idling.connect(_on_behavior_idling)
-    behavior.preparing_attack.connect(_on_behavior_preparing_attack)
-    behavior.attacking.connect(_on_behavior_attacking)
+    _behavior.set_apm(apm)
+    _behavior.idling.connect(_on_behavior_idling)
+    _behavior.preparing_attack.connect(_on_behavior_preparing_attack)
+    _behavior.attacking.connect(_on_behavior_attacking)
 
-    add_child(behavior)
+    add_child(_behavior)
 
     _on_behavior_idling()
 #end
@@ -63,7 +64,7 @@ func _on_behavior_attacking() -> void:
 #-----------------------------------------------------------------------------------------------------------------------
 func _randomize_AoE_position() -> void:
     var isHorizontal = randi() % 2
-    var value = AOE_OFFSET * ((randi() & 2) - 1)
+    var value = aoe_range * ((randi() & 2) - 1)
 
     if isHorizontal:
         $AoE.rotation_degrees = 0

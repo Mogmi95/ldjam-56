@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://34qf63wljga8"]
+[gd_scene load_steps=2 format=3 uid="uid://dv2mq7sqhekfp"]
 
-[ext_resource type="Script" path="res://boss/behavior.gd" id="1_gfmlx"]
+[ext_resource type="Script" path="res://boss/behavior_default.gd" id="1_disam"]
 
-[node name="Behavior" type="Node"]
-script = ExtResource("1_gfmlx")
+[node name="BehaviorDefault" type="Node"]
+script = ExtResource("1_disam")
 
 [node name="IdleTimer" type="Timer" parent="."]
 one_shot = true
