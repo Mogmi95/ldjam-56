@@ -47,7 +47,7 @@ func _ready() -> void:
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
-func _on_signals_mob_hurt() -> void:
+func _on_signals_mob_hurt(mob: Node) -> void:
     set_current_hp(_current_hp - (randi() % 2))
 #end
 
