@@ -9,11 +9,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_857bb"]
-size = Vector2(65, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5sy8"]
 
 [node name="AoE" type="Area2D"]
-scale = Vector2(4, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2.38419e-07, 1.90735e-06)
@@ -21,4 +19,4 @@ texture = SubResource("GradientTexture2D_bejcq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource("RectangleShape2D_857bb")
+shape = SubResource("RectangleShape2D_v5sy8")

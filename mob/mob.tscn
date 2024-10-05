@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgmxka3ris8ev"]
+[gd_scene load_steps=8 format=3 uid="uid://bgmxka3ris8ev"]
 
 [ext_resource type="Script" path="res://mob/mob.gd" id="1_4woou"]
-[ext_resource type="PackedScene" uid="uid://dv2mq7sqhekfp" path="res://mob/behavior_default.tscn" id="2_476tj"]
-[ext_resource type="PackedScene" uid="uid://3v4e7lsewuk0" path="res://mob/animation_default.tscn" id="3_20lnd"]
+[ext_resource type="PackedScene" uid="uid://bc3aj8tuw7ss" path="res://mob/behavior_food.tscn" id="2_qyrd0"]
+[ext_resource type="PackedScene" uid="uid://dml8w82bj0e57" path="res://mob/animation_food.tscn" id="3_llri5"]
 [ext_resource type="PackedScene" uid="uid://buu55jc3prky7" path="res://mob/aoe.tscn" id="4_am3aw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvg08"]
@@ -21,19 +21,18 @@ border_width_top = 3
 border_width_bottom = 3
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_difm4"]
+
 [node name="Mob" type="Node2D"]
 position = Vector2(656, 397)
 script = ExtResource("1_4woou")
-BehaviorScene = ExtResource("2_476tj")
-AnimationScene = ExtResource("3_20lnd")
-apm = 30.0
-aoe_range = 100
-aoe_size = Vector2(4, 1)
+BehaviorScene = ExtResource("2_qyrd0")
+AnimationScene = ExtResource("3_llri5")
 
 [node name="AoE" parent="." instance=ExtResource("4_am3aw")]
-scale = Vector2(1, 1)
 
 [node name="Healthbar" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -505.0
@@ -53,3 +52,11 @@ offset_right = 1018.0
 offset_bottom = 18.0
 scale = Vector2(0.5, 1)
 theme_override_styles/panel = SubResource("StyleBoxFlat_ymbhr")
+
+[node name="AggroRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroRadius"]
+shape = SubResource("CircleShape2D_difm4")
+
+[node name="Vital_1" type="Node2D" parent="."]
+position = Vector2(1, -88)

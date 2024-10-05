@@ -1,15 +1,18 @@
 extends Node2D
 
-class_name Boss
+class_name Mob
 
 #-----------------------------------------------------------------------------------------------------------------------
 @export var BehaviorScene: PackedScene
 @export var AnimationScene: PackedScene
+@export var show_healthbar = false
+@export var aggro_radius = 4
 @export var apm = 0.0
-@export var hit_points = 10
+@export var hit_points = 5
 @export var aoe_range = 0
 @export var aoe_size = Vector2(0, 0)
 @export var food_drop = 0
+@export var vitals: Array[Node2D]
 
 var _behavior: BehaviorInterface
 var _animation: AnimatedSprite2D
@@ -31,6 +34,14 @@ func _ready() -> void:
 
     _current_hp = hit_points
     $AoE.scale = aoe_size
+
+    $AggroRadius.scale.x = aggro_radius
+    $AggroRadius.scale.y = aggro_radius / 2.0
+
+    $Healthbar.show()
+
+    if show_healthbar:
+        $Healthbar.show()
 
     Signals.mob_hurt.connect(_on_signals_mob_hurt)
 #end
