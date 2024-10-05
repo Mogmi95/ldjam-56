@@ -12,6 +12,8 @@ class_name Boss
 
 var _behavior: BehaviorInterface
 var _animation: AnimatedSprite2D
+var _current_hp: int:
+    set = set_current_hp
 
 #-----------------------------------------------------------------------------------------------------------------------
 func _ready() -> void:
@@ -26,6 +28,7 @@ func _ready() -> void:
     _behavior.attacking.connect(_on_behavior_attacking)
     add_child(_behavior)
 
+    _current_hp = hit_points
     $AoE.scale = aoe_size
 #end
 
@@ -71,4 +74,10 @@ func _randomize_AoE_position() -> void:
         $AoE.rotation_degrees = 90
         $AoE.position.x = value
         $AoE.position.y = 0
+#end
+
+#-----------------------------------------------------------------------------------------------------------------------
+func set_current_hp(data: int) -> void:
+    _current_hp = data
+    $Healthbar/Foreground.scale.x = float(_current_hp) / float(hit_points)
 #end
