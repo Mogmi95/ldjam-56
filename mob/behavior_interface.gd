@@ -1,41 +1,43 @@
-extends BehaviorInterface
+extends Node
 
-class_name BehaviorDefault
+class_name BehaviorInterface
+
+#-----------------------------------------------------------------------------------------------------------------------
+signal idling
+signal preparing_attack
+signal attacking
+
+#-----------------------------------------------------------------------------------------------------------------------
+var _apm = 0.0:
+    set = set_apm
+var _food_drop = 0:
+    set = set_food_drop
 
 #-----------------------------------------------------------------------------------------------------------------------
 func _ready() -> void:
-    _idle()
+    ## Only to remove unused signals warnings. Method is not even called at runtime
+    idling.is_null()
+    preparing_attack.is_null()
+    attacking.is_null()
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
-func _on_idle_timer_timeout() -> void:
-    _prepare_attack()
+func _on_mob_died():
+    pass
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
-func _on_preparation_timer_timeout() -> void:
-    _attack()
+func set_apm(data: float):
+    _apm = data
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
-func _on_attack_timer_timeout() -> void:
-    _idle()
+func set_food_drop(data: int):
+    _food_drop = data
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
-func _prepare_attack() -> void:
-    preparing_attack.emit()
-    $PreparationTimer.start(1.0)
-#end
-
-#-----------------------------------------------------------------------------------------------------------------------
-func _attack() -> void:
-    attacking.emit()
-    $AttackTimer.start(0.2)
-#end
-
-#-----------------------------------------------------------------------------------------------------------------------
-func _idle() -> void:
-    idling.emit()
-    $IdleTimer.start((60.0 / _apm) - 1.2)
+func kill():
+    Signals.mob_died.emit(get_parent())
+    _on_mob_died()
 #end

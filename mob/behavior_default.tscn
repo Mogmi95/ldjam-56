@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dv2mq7sqhekfp"]
 
-[ext_resource type="Script" path="res://boss/behavior_default.gd" id="1_disam"]
+[ext_resource type="Script" path="res://mob/behavior_default.gd" id="1_disam"]
 
 [node name="BehaviorDefault" type="Node"]
 script = ExtResource("1_disam")

@@ -5,13 +5,16 @@ class_name Boss
 #-----------------------------------------------------------------------------------------------------------------------
 @export var BehaviorScene: PackedScene
 @export var AnimationScene: PackedScene
-@export var apm = 30.0
-@export var hit_points = 500
-@export var aoe_range = 100
-@export var aoe_size = Vector2(4, 1)
+@export var apm = 0.0
+@export var hit_points = 10
+@export var aoe_range = 0
+@export var aoe_size = Vector2(0, 0)
+@export var food_drop = 0
 
 var _behavior: BehaviorInterface
 var _animation: AnimatedSprite2D
+var _current_hp: int:
+    set = set_current_hp
 
 #-----------------------------------------------------------------------------------------------------------------------
 func _ready() -> void:
@@ -26,7 +29,15 @@ func _ready() -> void:
     _behavior.attacking.connect(_on_behavior_attacking)
     add_child(_behavior)
 
+    _current_hp = hit_points
     $AoE.scale = aoe_size
+
+    Signals.mob_hurt.connect(_on_signals_mob_hurt)
+#end
+
+#-----------------------------------------------------------------------------------------------------------------------
+func _on_signals_mob_hurt() -> void:
+    set_current_hp(_current_hp - (randi() % 2))
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -71,4 +82,13 @@ func _randomize_AoE_position() -> void:
         $AoE.rotation_degrees = 90
         $AoE.position.x = value
         $AoE.position.y = 0
+#end
+
+#-----------------------------------------------------------------------------------------------------------------------
+func set_current_hp(data: int) -> void:
+    _current_hp = data
+    $Healthbar/Foreground.scale.x = float(_current_hp) / float(hit_points)
+
+    if _current_hp <= 0:
+        _behavior.kill()
 #end
