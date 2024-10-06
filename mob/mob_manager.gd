@@ -19,13 +19,18 @@ func spawn_boss():
 func spawn_mob():
     pass
 
-func spawn_food(position: Vector2):
-    pass
+func spawn_food(mob_position: Vector2):
+    var new_food = MobFactory.create_food()
+    # TODO Spawn where the boss was
+    new_food.position = Vector2(0, 0)
+    add_child(new_food)
 
 func _on_food_consumed(food: Node):
+    food.hide()
+    remove_child(food)
     food.queue_free()
 
-func _on_mob_died(mob: Node):
+func _on_mob_died(mob: Node, was_boss: bool):
     mob.hide()
-    mob.queue_free()
     spawn_food(mob.position)
+    mob.queue_free()

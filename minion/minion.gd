@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 15000.0
 
-const DURATION_PREPARE_ATTACK = 0.5
-const DURATION_ATTACK = 1.0
+const DURATION_PREPARE_ATTACK = 0.25
+const DURATION_ATTACK = 0.5
 
 enum State {
     IDLE,
@@ -78,7 +78,7 @@ func set_target(new_target: Node2D):
         start_random_attack_timer()
 
 func start_random_attack_timer():
-    $AttackTimer.start(randf_range(1, 3))
+    $AttackTimer.start(randf_range(0.5, 1.5))
 
 func die():
     hide()

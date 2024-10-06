@@ -12,7 +12,6 @@ var minions = Array()
 func _ready() -> void:
     Signals.minion_hurt.connect(_on_minion_hurt)
     Signals.food_consumed.connect(_on_food_consumed)
-    # TODO: Find a way to emit minion_number_change
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

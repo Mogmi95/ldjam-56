@@ -10,10 +10,11 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5sy8"]
+size = Vector2(64, 64)
 
 [node name="AoE" type="Area2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AoE_Sprite" type="Sprite2D" parent="."]
 position = Vector2(-2.38419e-07, 1.90735e-06)
 texture = SubResource("GradientTexture2D_bejcq")
 
