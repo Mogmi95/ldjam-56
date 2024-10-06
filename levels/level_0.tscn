@@ -18,7 +18,7 @@ y_sort_enabled = true
 script = ExtResource("1_qqq2a")
 minimum_number_of_minions = 2
 clamp_y = Vector2i(360, 720)
-ending_x = 1280
+level_width = 1280
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -31,8 +31,7 @@ centered = false
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(0, 7.62939e-06)
-scale = Vector2(0.666146, 0.665741)
+scale = Vector2(0.67, 0.67)
 texture = ExtResource("3_ixhkl")
 centered = false
 

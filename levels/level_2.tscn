@@ -1,33 +1,31 @@
 [gd_scene load_steps=8 format=3 uid="uid://dlji31rktlpcp"]
 
-[ext_resource type="Texture2D" uid="uid://c7a0gr21ee8at" path="res://assets/levels/bg-lvl2.jpg" id="1_7xb1r"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_20k1q"]
-[ext_resource type="Texture2D" uid="uid://bda3gfri1pau3" path="res://assets/levels/fg-lvl2.png" id="2_8y0ih"]
+[ext_resource type="Texture2D" uid="uid://cqgtv7lc3otyc" path="res://assets/playa/sea.png" id="2_te8k3"]
+[ext_resource type="Texture2D" uid="uid://cbon8t651xf1d" path="res://assets/playa/boss_playa.png" id="3_th1xq"]
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="4_q0437"]
 [ext_resource type="PackedScene" uid="uid://dv2mq7sqhekfp" path="res://mob/behavior_default.tscn" id="5_bw6rj"]
 [ext_resource type="PackedScene" uid="uid://3v4e7lsewuk0" path="res://mob/animation_default.tscn" id="6_nkebe"]
-[ext_resource type="PackedScene" uid="uid://bxpogcnmtsowy" path="res://Target.tscn" id="7_tlv2l"]
+[ext_resource type="PackedScene" path="res://Target.tscn" id="7_tlv2l"]
 
 [node name="Level2" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_20k1q")
 minimum_number_of_minions = 5
 clamp_y = Vector2i(0, 720)
+level_width = 720
+camera_where_to = 320
+loading_checkpoint = 720
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
-texture = ExtResource("1_7xb1r")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("2_te8k3")
 centered = false
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.8, 0.8)
-motion_mirroring = Vector2(1280, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(0, 522)
-scale = Vector2(1.08, 1)
-texture = ExtResource("2_8y0ih")
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, -360)
+texture = ExtResource("3_th1xq")
 centered = false
 
 [node name="Mob" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("4_q0437")]
