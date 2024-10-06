@@ -22,7 +22,7 @@ func _input(event):
 
 
 func new_game() -> void:
-    level_nbr = 2
+    level_nbr = 0
     load_level(level_nbr)
 
 # Transitions between levels should be handled here
@@ -42,7 +42,8 @@ func load_level(lvl_nbr: int) -> void:
         $CameraCollision.position.x
     )
     $MinionManager.set_minimum_number_of_minions(current_level_sc.minimum_number_of_minions)
-    add_child(current_level_sc)
+    call_deferred("add_child", current_level_sc)
+
 
 # Called when level_ended signal is triggered
 func _change_level() -> void:
