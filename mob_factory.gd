@@ -7,6 +7,14 @@ func create_food() -> Mob:
     food.BehaviorScene = preload("res://mob/behavior_food.tscn")
     food.AnimationScene = preload("res://mob/animation_food.tscn")
 
+    food.show_healthbar = false
+    food.apm = 0
+    food.hit_points = 1
+    food.aoe_range = 0
+    food.aggro_radius = 10
+    food.aoe_size = Vector2.ZERO
+    food.vitals.append(food)
+
     return food
 #end
 
