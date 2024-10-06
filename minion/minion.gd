@@ -93,17 +93,22 @@ func _on_prepare_attack_timer_timeout() -> void:
     if target != null:
         var vital_position = target.vitals[randi_range(0, target.vitals.size() - 1)].global_position
         state = State.ATTACK
-        $PathToTarget.curve.clear_points()
 
+        # Jump to target animation
+        $PathToTarget.curve.clear_points()
         var flip = 1
         if velocity.x < 0:
             flip = -1
-
         var in_vector = Vector2(flip * randi_range(50, 100), randi_range(300, 700))
         var out_vector = in_vector * -1
 
         $PathToTarget.curve.add_point(Vector2(0, 0), in_vector)
         $PathToTarget.curve.add_point(vital_position - global_position, out_vector)
+
+        # Shadow following
+        $PathForShadow.curve.clear_points()
+        $PathForShadow.curve.add_point(Vector2(0, 0))
+        $PathForShadow.curve.add_point(target.global_position - global_position)
 
         $AnimationPlayer.play("atak")
     else:
@@ -114,6 +119,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
     state = State.IDLE
     $AttackTimer.start(2.0)
     $PathToTarget/PathFollow2D.rotation = 0
+    $PathForShadow/PathFollowShadow.rotation = 0
     $PathToTarget.curve.clear_points()
     start_random_attack_timer()
 

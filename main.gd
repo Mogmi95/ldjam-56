@@ -26,7 +26,7 @@ func _input(event):
 func new_game() -> void:
     current_level_sc = null
     $CameraCollision.position = Vector2.ZERO
-    level_nbr = 0
+    level_nbr = 2
     load_level(level_nbr)
 
 func game_over() -> void:
