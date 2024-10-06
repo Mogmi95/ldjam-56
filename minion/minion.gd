@@ -66,7 +66,7 @@ func _physics_process(delta):
         var distance_to_leader = global_position.distance_to(leader.global_position)
         if distance_to_leader > 5:
             velocity = global_position.direction_to(leader.global_position)
-            velocity *= SPEED * delta
+            velocity *= SPEED * leader.dash_speed * delta
             # move_and_collide(velocity)
             move_and_slide()
         else:

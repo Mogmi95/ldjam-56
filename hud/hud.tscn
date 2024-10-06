@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://k5d3jg38igg2"]
+[gd_scene load_steps=5 format=3 uid="uid://k5d3jg38igg2"]
 
 [ext_resource type="Script" path="res://hud/hud.gd" id="1_pyxd5"]
 [ext_resource type="FontFile" uid="uid://bjlcxvwf8wb12" path="res://fonts/Jurassic_Park.ttf" id="2_ac20b"]
+[ext_resource type="Texture2D" uid="uid://b3a8bnpllyuhj" path="res://assets/hud/under.png" id="3_81lf1"]
+[ext_resource type="Texture2D" uid="uid://b35dtgobywvyx" path="res://assets/hud/progress.png" id="4_2nl47"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_pyxd5")
@@ -73,6 +75,12 @@ grow_vertical = 0
 theme_override_fonts/font = ExtResource("2_ac20b")
 theme_override_font_sizes/font_size = 80
 text = "Quit"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_under = ExtResource("3_81lf1")
+texture_progress = ExtResource("4_2nl47")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
