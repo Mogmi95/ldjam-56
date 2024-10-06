@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://bgo5xlu70ifr5"]
+[gd_scene load_steps=20 format=3 uid="uid://bgo5xlu70ifr5"]
 
 [ext_resource type="Script" path="res://minion/minion.gd" id="1_xslsr"]
 [ext_resource type="Texture2D" uid="uid://bl2o7vhkqj2tl" path="res://assets/chomposaurus/atk.png" id="2_2s38t"]
+[ext_resource type="Texture2D" uid="uid://bdwsfmlj8okm2" path="res://assets/chomposaurus/shadow.png" id="2_x43bm"]
 [ext_resource type="Texture2D" uid="uid://dr2ahqyjdfpr5" path="res://assets/chomposaurus/dmg.png" id="3_bywlp"]
 [ext_resource type="Texture2D" uid="uid://bs3b5xx7clj2l" path="res://assets/chomposaurus/chomp_idle1.png" id="3_gqqqa"]
 [ext_resource type="Texture2D" uid="uid://cr650ubgqe6r7" path="res://assets/chomposaurus/chomp_idle2.png" id="4_e046a"]
@@ -198,6 +199,11 @@ scale = Vector2(0.349609, 0.352384)
 sprite_frames = SubResource("SpriteFrames_un3jw")
 animation = &"prepare_attack"
 autoplay = "idle"
+
+[node name="Shadow" type="Sprite2D" parent="PathToTarget/PathFollow2D"]
+position = Vector2(4, 37)
+scale = Vector2(0.68, 0.681818)
+texture = ExtResource("2_x43bm")
 
 [node name="Area2D" type="Area2D" parent="."]
 
