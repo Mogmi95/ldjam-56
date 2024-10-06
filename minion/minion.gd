@@ -119,7 +119,8 @@ func _on_prepare_attack_timer_timeout() -> void:
         state = State.IDLE
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-    Signals.mob_hurt.emit(target)
+    if target != null:
+        Signals.mob_hurt.emit(target)
     state = State.IDLE
     $AttackTimer.start(2.0)
     $PathToTarget/PathFollow2D.rotation = 0
