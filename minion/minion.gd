@@ -126,10 +126,12 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
     if area.name == "AggroRadius":
-        set_target(area.get_parent())
+        if state == State.IDLE or state == State.WALK:
+            set_target(area.get_parent())
 
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
     if area.name == "AggroRadius":
-        set_target(null)
+        if state == State.IDLE or state == State.WALK:
+            set_target(null)
