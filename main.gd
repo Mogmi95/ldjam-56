@@ -8,6 +8,8 @@ var x_max : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Signals.level_ended.connect(_change_level)
+    Signals.game_over.connect(game_over)
+    Signals.start_game.connect(new_game)
     new_game()
 
 
@@ -22,8 +24,14 @@ func _input(event):
 
 
 func new_game() -> void:
-    level_nbr = 2
+    current_level_sc = null
+    $CameraCollision.position = Vector2.ZERO
+    level_nbr = 0
     load_level(level_nbr)
+
+func game_over() -> void:
+    $CameraCollision.should_camera_move = false
+    $HUD.show_game_over()
 
 # Transitions between levels should be handled here
 func load_level(lvl_nbr: int) -> void:
