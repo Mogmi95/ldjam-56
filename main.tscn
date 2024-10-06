@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://main.gd" id="1_1vjo6"]
 [ext_resource type="PackedScene" uid="uid://mc77u87jftr" path="res://player/player.tscn" id="1_8m0ob"]
 [ext_resource type="PackedScene" uid="uid://cskrmvq8iku8t" path="res://minion/MinionManager.tscn" id="2_whvwy"]
-[ext_resource type="PackedScene" uid="uid://584fcxf4njsb" path="res://mob/mob_manager.tscn" id="4_sbqbv"]
-[ext_resource type="PackedScene" uid="uid://bl2kbhcd0qdd1" path="res://camera/camera_collision.tscn" id="4_ysbqa"]
+[ext_resource type="PackedScene" path="res://mob/mob_manager.tscn" id="4_sbqbv"]
+[ext_resource type="PackedScene" uid="uid://ca86ciqxq5cax" path="res://camera/camera_collision.tscn" id="4_ysbqa"]
 [ext_resource type="PackedScene" uid="uid://k5d3jg38igg2" path="res://hud/hud.tscn" id="5_j7bnl"]
 
 [node name="Main" type="Node2D"]
@@ -25,3 +25,7 @@ position = Vector2(534, 361)
 [node name="CameraCollision" parent="." instance=ExtResource("4_ysbqa")]
 
 [node name="HUD" parent="." instance=ExtResource("5_j7bnl")]
+
+[node name="PostFightTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
