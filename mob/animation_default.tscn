@@ -1,15 +1,15 @@
 [gd_scene load_steps=6 format=3 uid="uid://3v4e7lsewuk0"]
 
-[ext_resource type="Texture2D" uid="uid://bcgojncvju7mv" path="res://assets/cathy_attack.png" id="1_dyuja"]
-[ext_resource type="Texture2D" uid="uid://b4xo7jgmeqih0" path="res://assets/cathy_crouch.png" id="2_olsja"]
-[ext_resource type="Texture2D" uid="uid://brhl63547miy2" path="res://assets/cathy_idle1.png" id="3_vtjtk"]
-[ext_resource type="Texture2D" uid="uid://c2fe2ql7pm5xt" path="res://assets/cathy_idle2.png" id="4_cfxyr"]
+[ext_resource type="Texture2D" uid="uid://cbv1vpcd4h227" path="res://assets/boss/cathy_atk.png" id="1_38fdd"]
+[ext_resource type="Texture2D" uid="uid://dvng8qp0fv85l" path="res://assets/boss/cathy_charge.png" id="2_lmakm"]
+[ext_resource type="Texture2D" uid="uid://lfk4jikgy6ej" path="res://assets/boss/cathy_idle1.png" id="3_1qpsc"]
+[ext_resource type="Texture2D" uid="uid://cessqorl2av7g" path="res://assets/boss/cathy_idle2.png" id="4_w5w1n"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eapgv"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_dyuja")
+"texture": ExtResource("1_38fdd")
 }],
 "loop": true,
 "name": &"attack",
@@ -17,18 +17,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_olsja")
+"texture": ExtResource("2_lmakm")
 }],
 "loop": true,
 "name": &"crouch",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_vtjtk")
+"texture": ExtResource("3_1qpsc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_cfxyr")
+"texture": ExtResource("4_w5w1n")
 }],
 "loop": true,
 "name": &"idle",
@@ -38,4 +38,4 @@ animations = [{
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 position = Vector2(2, -118)
 sprite_frames = SubResource("SpriteFrames_eapgv")
-animation = &"idle"
+animation = &"attack"
