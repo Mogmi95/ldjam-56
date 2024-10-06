@@ -87,6 +87,10 @@ func _on_attack_timer_timeout() -> void:
     if target != null:
         state = State.PREPARE_ATTACK
         sprite.animation = "prepare_attack"
+
+        # Turning the minion if not facing the target
+        sprite.flip_h = global_position.x > target.global_position.x
+
         $PrepareAttackTimer.start(DURATION_PREPARE_ATTACK)
 
 func _on_prepare_attack_timer_timeout() -> void:
