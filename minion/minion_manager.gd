@@ -47,7 +47,6 @@ func _spawn(pos: Vector2):
 
 func _on_minion_hurt(minion: Node):
     minions.erase(minion)
-    remove_child(minion)
     minion.die()
     minion.queue_free()
     _emit_number_change()

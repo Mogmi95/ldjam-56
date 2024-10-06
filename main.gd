@@ -54,9 +54,6 @@ func load_level(lvl_nbr: int) -> void:
 
     current_level_sc.global_position.x = x_offset
 
-    print("Adding level at x: %d" % current_level_sc.global_position.x)
-    print("Camera x position: %d" % $CameraCollision.position.x)
-
     call_deferred("add_child", current_level_sc)
 #end
 
@@ -72,7 +69,7 @@ func _on_mob_died(mob: Mob) -> void:
 #end
 
 func _on_post_fight_timer_timeout() -> void:
-    print("BITE")
+    pass
 #end
 
 func dezoom(delta: float) -> void:
