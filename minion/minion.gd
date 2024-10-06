@@ -95,6 +95,8 @@ func _on_prepare_attack_timer_timeout() -> void:
         $PathToTarget.curve.add_point(Vector2(0, 0))
         $PathToTarget.curve.add_point(target.global_position - global_position)
         $AnimationPlayer.play("atak")
+    else:
+        state = State.IDLE
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
     Signals.mob_hurt.emit(target)
@@ -106,7 +108,8 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-    set_target(area.get_parent())
+    if area.name == "AggroRadius":
+        set_target(area.get_parent())
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
