@@ -12,20 +12,23 @@ func _ready() -> void:
     Signals.start_game.connect(new_game)
     Signals.mob_died.connect(_on_mob_died)
     $PostFightTimer.timeout.connect(_on_post_fight_timer_timeout)
-    new_game()
+    $HUD.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    if $CameraCollision.position.x >= (x_offset + current_level_sc.loading_checkpoint):
-        _change_level()
+    if  current_level_sc != null:
+        if $CameraCollision.position.x >= (x_offset + current_level_sc.loading_checkpoint):
+            _change_level()
 
-    $Player.set_boundaries(true, current_level_sc.clamp_y, $CameraCollision.position.x)
+        $Player.set_boundaries(true, current_level_sc.clamp_y, $CameraCollision.position.x)
 
-    if !$PostFightTimer.is_stopped():
-        dezoom(delta)
+        if !$PostFightTimer.is_stopped():
+            dezoom(delta)
 #end
 
 func new_game() -> void:
+    $MainMenu.hide()
+    $HUD.show()
     current_level_sc = null
     $CameraCollision.position = Vector2.ZERO
     level_nbr = 0
