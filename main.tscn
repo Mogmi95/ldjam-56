@@ -25,3 +25,7 @@ position = Vector2(534, 361)
 [node name="CameraCollision" parent="." instance=ExtResource("4_ysbqa")]
 
 [node name="HUD" parent="." instance=ExtResource("5_j7bnl")]
+
+[node name="PostFightTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true

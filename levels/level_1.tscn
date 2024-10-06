@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://4cioi3e5nivi"]
+[gd_scene load_steps=8 format=3 uid="uid://4cioi3e5nivi"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_qoqef"]
 [ext_resource type="Texture2D" uid="uid://cqgtv7lc3otyc" path="res://assets/playa/sea.png" id="2_0tl0n"]
 [ext_resource type="Texture2D" uid="uid://1ujo1l5xf84b" path="res://assets/playa/playa.png" id="3_umjut"]
+[ext_resource type="Texture2D" uid="uid://bny0d54wh2qg7" path="res://assets/playa/trunk.png" id="4_n8pmp"]
+[ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="5_80a07"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jg2d2"]
 b = Vector2(0, 720)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6irry"]
+radius = 72.0
+height = 551.157
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_qoqef")
@@ -35,5 +41,75 @@ centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("SegmentShape2D_jg2d2")
+
+[node name="Obstacle" type="StaticBody2D" parent="."]
+position = Vector2(1448, 371)
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
+texture = ExtResource("4_n8pmp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
+position = Vector2(0, -12)
+rotation = 0.942478
+shape = SubResource("CapsuleShape2D_6irry")
+
+[node name="Obstacle2" type="StaticBody2D" parent="."]
+position = Vector2(793, 667)
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle2"]
+texture = ExtResource("4_n8pmp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2"]
+position = Vector2(0, -12)
+rotation = 0.942478
+shape = SubResource("CapsuleShape2D_6irry")
+
+[node name="Obstacle3" type="StaticBody2D" parent="."]
+position = Vector2(1562, 673)
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle3"]
+texture = ExtResource("4_n8pmp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle3"]
+position = Vector2(0, -12)
+rotation = 0.942478
+shape = SubResource("CapsuleShape2D_6irry")
+
+[node name="Obstacle4" type="StaticBody2D" parent="."]
+position = Vector2(468, 377)
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle4"]
+texture = ExtResource("4_n8pmp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle4"]
+position = Vector2(0, -12)
+rotation = 0.942478
+shape = SubResource("CapsuleShape2D_6irry")
+
+[node name="Food" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_80a07")]
+position = Vector2(260, 645)
+aggro_radius = 40
+hit_points = 1
+vitals = [NodePath(".")]
+
+[node name="Food2" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_80a07")]
+position = Vector2(1740, 669)
+aggro_radius = 40
+hit_points = 1
+vitals = [NodePath(".")]
+
+[node name="Food3" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_80a07")]
+position = Vector2(1012, 407)
+aggro_radius = 40
+hit_points = 1
+vitals = [NodePath(".")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

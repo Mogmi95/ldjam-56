@@ -106,3 +106,8 @@ func set_current_hp(data: int) -> void:
     if _current_hp <= 0:
         _behavior.kill()
 #end
+
+#-----------------------------------------------------------------------------------------------------------------------
+func is_boss() -> bool:
+    return show_healthbar
+#end
