@@ -17,6 +17,6 @@ fill_to = Vector2(1, 1)
 position = Vector2(-2.38419e-07, 1.90735e-06)
 texture = SubResource("GradientTexture2D_bejcq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="AoE_Damage" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_v5sy8")

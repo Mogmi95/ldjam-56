@@ -7,13 +7,15 @@
 [ext_resource type="PackedScene" uid="uid://bl2kbhcd0qdd1" path="res://camera/camera_collision.tscn" id="4_ysbqa"]
 [ext_resource type="PackedScene" uid="uid://k5d3jg38igg2" path="res://hud/hud.tscn" id="5_j7bnl"]
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_1vjo6")
 
 [node name="Player" parent="." instance=ExtResource("1_8m0ob")]
 position = Vector2(623, 355)
 
 [node name="MinionManager" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_whvwy")]
+z_index = 1
 position = Vector2(559, 372)
 leader = NodePath("../Player")
 

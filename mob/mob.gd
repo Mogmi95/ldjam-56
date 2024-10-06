@@ -55,7 +55,7 @@ func _on_signals_mob_hurt(mob: Node) -> void:
 func _on_behavior_idling() -> void:
     _animation.play("idle")
 
-    $AoE/CollisionShape2D.hide();
+    $AoE/AoE_Damage.hide();
     $AoE.hide();
 #end
 
@@ -77,7 +77,10 @@ func _on_behavior_attacking() -> void:
     _animation.play("attack")
 
     $AoE/Sprite2D.texture.gradient.set_color(0, Color(1, 0, 0))
-    $AoE/CollisionShape2D.show();
+    $AoE/AoE_Damage.show();
+    for hit_minion in $AoE.get_overlapping_bodies():
+        Signals.minion_hurt.emit(hit_minion)
+
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------

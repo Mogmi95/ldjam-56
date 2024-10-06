@@ -45,8 +45,10 @@ func _spawn(position: Vector2):
     return minion
 
 func _on_minion_hurt(minion: Node):
-    # TODO check that the minion is real, remove it from the list
+    minions.erase(minion)
+    remove_child(minion)
     minion.die()
+    minion.queue_free()
     _emit_number_change()
 
 func _on_food_consumed(food: Node):

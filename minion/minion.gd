@@ -24,6 +24,7 @@ var last_traveled_distances = Array()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     sprite = $PathToTarget/PathFollow2D/MinionSprite
+    #sprite.modulate = Color(randf(), randf(), randf())
     last_position = global_position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -90,10 +91,11 @@ func _on_attack_timer_timeout() -> void:
 
 func _on_prepare_attack_timer_timeout() -> void:
     if target != null:
+        var vital_position = target.vitals[randi_range(0, target.vitals.size() - 1)].global_position
         state = State.ATTACK
         $PathToTarget.curve.clear_points()
         $PathToTarget.curve.add_point(Vector2(0, 0))
-        $PathToTarget.curve.add_point(target.global_position - global_position)
+        $PathToTarget.curve.add_point(vital_position - global_position)
         $AnimationPlayer.play("atak")
     else:
         state = State.IDLE
@@ -110,6 +112,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
     if area.name == "AggroRadius":
         set_target(area.get_parent())
+
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:

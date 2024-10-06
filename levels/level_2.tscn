@@ -1,11 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlji31rktlpcp"]
+[gd_scene load_steps=8 format=3 uid="uid://dlji31rktlpcp"]
 
 [ext_resource type="Texture2D" uid="uid://c7a0gr21ee8at" path="res://assets/levels/bg-lvl2.jpg" id="1_7xb1r"]
 [ext_resource type="Script" path="res://levels/level.gd" id="1_20k1q"]
 [ext_resource type="Texture2D" uid="uid://bda3gfri1pau3" path="res://assets/levels/fg-lvl2.png" id="2_8y0ih"]
+[ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="4_q0437"]
+[ext_resource type="PackedScene" uid="uid://dv2mq7sqhekfp" path="res://mob/behavior_default.tscn" id="5_bw6rj"]
+[ext_resource type="PackedScene" uid="uid://3v4e7lsewuk0" path="res://mob/animation_default.tscn" id="6_nkebe"]
+[ext_resource type="PackedScene" uid="uid://bxpogcnmtsowy" path="res://Target.tscn" id="7_tlv2l"]
 
 [node name="Level2" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_20k1q")
+minimum_number_of_minions = 20
 clamp_y = Vector2i(0, 720)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -23,3 +29,20 @@ position = Vector2(0, 522)
 scale = Vector2(1.08, 1)
 texture = ExtResource("2_8y0ih")
 centered = false
+
+[node name="Mob" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("4_q0437")]
+position = Vector2(691, 379)
+BehaviorScene = ExtResource("5_bw6rj")
+AnimationScene = ExtResource("6_nkebe")
+show_healthbar = true
+aggro_radius = 30
+apm = 30.0
+hit_points = 500
+aoe_range = 100
+aoe_size = Vector2(10, 3)
+food_drop = 1
+vitals = [NodePath("Target")]
+
+[node name="Target" parent="Mob" instance=ExtResource("7_tlv2l")]
+visible = false
+position = Vector2(0, -170)
