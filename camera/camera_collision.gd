@@ -7,8 +7,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+    delta = delta
     pass
 
 
 func _on_body_entered(body: Node2D) -> void:
-    Signals.minion_hurt.emit(body)
+    if body.name == "Minion":
+        Signals.minion_hurt.emit(body)
