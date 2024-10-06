@@ -43,7 +43,7 @@ centered = false
 shape = SubResource("SegmentShape2D_jg2d2")
 
 [node name="Obstacle" type="StaticBody2D" parent="."]
-position = Vector2(1448, 371)
+position = Vector2(1246, 477)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 

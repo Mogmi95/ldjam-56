@@ -28,7 +28,6 @@ func spawn_food(mob_position: Vector2, quantity_of_food_to_drop):
 
 func _on_food_consumed(food: Node):
     food.hide()
-    call_deferred("remove_child", food)
     food.queue_free()
 
 func _on_mob_died(mob: Node):
