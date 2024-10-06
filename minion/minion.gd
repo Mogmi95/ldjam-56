@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
     if forced_walk:
         sprite.animation = "walk"
     else:
+        $AnimationPlayer.speed_scale = leader.dash_speed
         match (state):
             State.IDLE, State.WALK:
                 if has_minion_significantly_moved:
