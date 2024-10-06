@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 func new_game() -> void:
     current_level_sc = null
     $CameraCollision.position = Vector2.ZERO
-    level_nbr = 2
+    level_nbr = 0
     load_level(level_nbr)
 #end
 
