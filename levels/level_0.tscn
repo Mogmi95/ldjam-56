@@ -15,7 +15,7 @@ size = Vector2(1288, 334)
 
 [node name="Level0" type="Node2D"]
 script = ExtResource("1_qqq2a")
-minimum_number_of_minions = 50
+minimum_number_of_minions = 2
 clamp_y = Vector2i(360, 720)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
