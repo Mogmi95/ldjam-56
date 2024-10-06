@@ -14,6 +14,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     pass
 
+func _input(event):
+    # Mouse in viewport coordinates.
+    if event is InputEventMouseButton:
+        print("Mouse Click/Unclick at: ", event.position)
+    elif event is InputEventMouseMotion:
+        print("Mouse Motion at: ", event.position)
+
 
 func new_game() -> void:
     level_nbr = 0
