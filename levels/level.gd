@@ -1,16 +1,18 @@
 extends Node2D
 
+class_name Level
+
 @export var should_camera_move: bool
 @export var minimum_number_of_minions: int
 # y Min, y Max
 @export var clamp_y: Vector2i
-@export var ending_x: int
+@export var level_width: int
+@export var camera_where_to: int
+@export var loading_checkpoint: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    if should_camera_move and ending_x != 0:
-        $Area2D/CollisionShape2D.position.x = ending_x
-
+    pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -19,7 +21,7 @@ func _process(delta: float) -> void:
 
 # Triggered when ending_x has been reached
 func _on_body_entered(body: Node2D) -> void:
-    Signals.level_ended.emit()
+
     $Area2D/CollisionShape2D.set_deferred("disabled", true)
 
 

@@ -11,7 +11,9 @@ b = Vector2(0, 720)
 script = ExtResource("1_qoqef")
 should_camera_move = true
 clamp_y = Vector2i(150, 720)
-ending_x = 6400
+level_width = 2560
+camera_where_to = 2560
+loading_checkpoint = 1280
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -24,7 +26,8 @@ centered = false
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2(0.669271, 0.665741)
+position = Vector2(0, 1.78814e-07)
+scale = Vector2(0.67, 0.67)
 texture = ExtResource("3_umjut")
 centered = false
 
