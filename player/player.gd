@@ -23,16 +23,16 @@ func _ready() -> void:
 
 func _input(event):
     # Mouse in viewport coordinates.
-    if event is InputEventMouseButton:
-        print("Mouse Click/Unclick at: ", event.position)
-    elif event is InputEventMouseMotion:
+    #if event is InputEventMouseButton:
+    #    print("Mouse Click/Unclick at: ", event.position)
+    if event is InputEventMouseMotion:
         mouse_pos = event.position
         currently_used_controller = Controller.MOUSE
     else:
         currently_used_controller = Controller.KEYBOARD
 
     # Print the size of the viewport.
-    print("Viewport Resolution is: ", get_viewport().get_visible_rect().size)
+    #print("Viewport Resolution is: ", get_viewport().get_visible_rect().size)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -51,11 +51,11 @@ func _process(delta: float) -> void:
             velocity = velocity.normalized() * speed
 
         position += velocity * delta
-        position.y = clampi(position.y, level_boundaries.x, level_boundaries.y)
-        if clamp_x:
-            position.x = clampi(position.x, last_x, last_x + screen_size.x)
     else:
         position = mouse_pos
+    position.y = clampi(position.y, level_boundaries.x, level_boundaries.y)
+    if clamp_x:
+        position.x = clampi(position.x, last_x, last_x + screen_size.x)
 
 
 func set_boundaries(xclamp: bool, y_boundaries: Vector2i, xlast: int) -> void:
