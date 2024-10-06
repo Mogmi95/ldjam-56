@@ -10,7 +10,7 @@ signal minions_number_changed(nbr: int)
 
 signal mob_hurt(mob: Node)
 
-signal mob_died(mob: Node, was_boss: bool)
+signal mob_died(mob: Node)
 
 signal level_ended()
 

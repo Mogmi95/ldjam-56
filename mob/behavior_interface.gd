@@ -38,6 +38,6 @@ func set_food_drop(data: int):
 
 #-----------------------------------------------------------------------------------------------------------------------
 func kill():
-    Signals.mob_died.emit(get_parent(), true)
+    Signals.mob_died.emit(get_parent())
     _on_mob_died()
 #end
