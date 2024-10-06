@@ -11,7 +11,7 @@
 [node name="Level2" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_20k1q")
-minimum_number_of_minions = 1
+minimum_number_of_minions = 5
 clamp_y = Vector2i(0, 720)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -37,7 +37,7 @@ AnimationScene = ExtResource("6_nkebe")
 show_healthbar = true
 aggro_radius = 30
 apm = 30.0
-hit_points = 2
+hit_points = 5000
 aoe_range = 100
 aoe_size = Vector2(10, 3)
 food_drop = 1

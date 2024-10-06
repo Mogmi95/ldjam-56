@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 15000.0
 
-const DURATION_PREPARE_ATTACK = 0.25
-const DURATION_ATTACK = 0.5
+const DURATION_PREPARE_ATTACK = 0.5
+const DURATION_ATTACK = 1
 
 enum State {
     IDLE,
@@ -94,8 +94,17 @@ func _on_prepare_attack_timer_timeout() -> void:
         var vital_position = target.vitals[randi_range(0, target.vitals.size() - 1)].global_position
         state = State.ATTACK
         $PathToTarget.curve.clear_points()
-        $PathToTarget.curve.add_point(Vector2(0, 0))
-        $PathToTarget.curve.add_point(vital_position - global_position)
+
+        var flip = 1
+        if velocity.x < 0:
+            flip = -1
+
+        var in_vector = Vector2(flip * randi_range(50, 100), randi_range(300, 700))
+        var out_vector = in_vector * -1
+
+        $PathToTarget.curve.add_point(Vector2(0, 0), in_vector)
+        $PathToTarget.curve.add_point(vital_position - global_position, out_vector)
+
         $AnimationPlayer.play("atak")
     else:
         state = State.IDLE

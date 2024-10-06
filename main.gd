@@ -22,7 +22,7 @@ func _input(event):
 
 
 func new_game() -> void:
-    level_nbr = 0
+    level_nbr = 2
     load_level(level_nbr)
 
 # Transitions between levels should be handled here
