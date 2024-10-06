@@ -46,10 +46,12 @@ func _process(delta: float) -> void:
 
         position += velocity * delta
     else:
-        position = mouse_pos
-    position.y = clampi(position.y, level_boundaries.x, level_boundaries.y)
+        #position = mouse_pos
+        position.x = last_x + mouse_pos.x
+        position.y = mouse_pos.y
+    position.y = clamp(position.y, level_boundaries.x, level_boundaries.y)
     if clamp_x:
-        position.x = clampi(position.x, last_x, last_x + screen_size.x)
+        position.x = clamp(position.x, last_x, last_x + screen_size.x)
 
 
 func set_boundaries(xclamp: bool, y_boundaries: Vector2i, xlast: int) -> void:
