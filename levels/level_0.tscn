@@ -17,6 +17,7 @@ size = Vector2(1288, 334)
 script = ExtResource("1_qqq2a")
 minimum_number_of_minions = 2
 clamp_y = Vector2i(360, 720)
+ending_x = 1280
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -29,8 +30,8 @@ centered = false
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(0, 105)
-scale = Vector2(0.666146, 0.568519)
+position = Vector2(0, 7.62939e-06)
+scale = Vector2(0.666146, 0.665741)
 texture = ExtResource("3_ixhkl")
 centered = false
 
@@ -83,3 +84,10 @@ shape = SubResource("CapsuleShape2D_o34a2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(640, 163)
 shape = SubResource("RectangleShape2D_cv5nd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

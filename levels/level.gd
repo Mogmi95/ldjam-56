@@ -14,9 +14,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+    delta = delta
     pass
 
 # Triggered when ending_x has been reached
 func _on_body_entered(body: Node2D) -> void:
     Signals.level_ended.emit()
     $Area2D/CollisionShape2D.set_deferred("disabled", true)
+
+
+func _on_timer_timeout() -> void:
+    Signals.level_ended.emit()
