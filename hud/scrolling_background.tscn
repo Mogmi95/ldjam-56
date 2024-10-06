@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://fddf3bquhoax"]
+
+[ext_resource type="Shader" path="res://hud/scrolling.gdshader" id="1_p1bfk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vbmha"]
+resource_local_to_scene = true
+shader = ExtResource("1_p1bfk")
+shader_parameter/scroll_speed = 3.0
+
+[node name="ScrollingBackground" type="TextureRect"]
+material = SubResource("ShaderMaterial_vbmha")
+offset_right = 40.0
+offset_bottom = 40.0
+stretch_mode = 1

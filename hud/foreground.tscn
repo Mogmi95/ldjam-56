@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqau1tim50yu6"]
+
+[ext_resource type="PackedScene" uid="uid://fddf3bquhoax" path="res://hud/scrolling_background.tscn" id="1_ef3d5"]
+[ext_resource type="Shader" path="res://hud/scrolling.gdshader" id="2_r3jqm"]
+[ext_resource type="Texture2D" uid="uid://1ujo1l5xf84b" path="res://assets/playa/playa.png" id="3_acl1y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqn4w"]
+resource_local_to_scene = true
+shader = ExtResource("2_r3jqm")
+shader_parameter/scroll_speed = 0.1
+
+[node name="Foreground" type="Node2D"]
+
+[node name="ScrollingBackground" parent="." instance=ExtResource("1_ef3d5")]
+material = SubResource("ShaderMaterial_mqn4w")
+texture = ExtResource("3_acl1y")
