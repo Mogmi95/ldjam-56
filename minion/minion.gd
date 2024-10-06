@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
             else:
                 sprite.animation = "idle"
         State.PREPARE_ATTACK:
-            sprite.animation = "attack"
+            sprite.animation = "prepare_attack"
         State.ATTACK:
             pass
         State.DAMAGED:
