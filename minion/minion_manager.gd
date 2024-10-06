@@ -34,13 +34,14 @@ func generate_new_minion_position():
         new_position = last_minion.position + Vector2(0.01, 0.01)
     return new_position
 
-func _spawn(position: Vector2):
+func _spawn(pos: Vector2):
     var minion = minion_scene.instantiate()
-    minion.position = position
+    minion.position = pos
     minion.set_leader(leader)
     minion.set_target(target)
     minions.append(minion)
     add_child(minion)
+    _emit_number_change()
     return minion
 
 func _on_minion_hurt(minion: Node):

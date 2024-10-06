@@ -20,6 +20,7 @@ func _ready() -> void:
     level_boundaries = Vector2i(0, screen_size.y)
     last_x = 0
     clamp_x = false
+    position = Vector2(50, 50)
 
 func _input(event):
     if event is InputEventMouseMotion:

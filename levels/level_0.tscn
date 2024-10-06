@@ -36,10 +36,11 @@ scale = Vector2(0.666146, 0.665741)
 texture = ExtResource("3_ixhkl")
 centered = false
 
-[node name="Mob" parent="." instance=ExtResource("4_3okux")]
-position = Vector2(1943, 456)
+[node name="Mob" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("4_3okux")]
+position = Vector2(1040, 496)
 aggro_radius = 40
 hit_points = 1
+vitals = [NodePath(".")]
 
 [node name="Obstacle" type="StaticBody2D" parent="."]
 y_sort_enabled = true
