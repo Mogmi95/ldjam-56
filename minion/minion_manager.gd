@@ -41,6 +41,7 @@ func _spawn(pos: Vector2):
     minion.set_target(target)
     minions.append(minion)
     add_child(minion)
+    minion.name = "Minion"
     _emit_number_change()
     return minion
 
@@ -50,6 +51,8 @@ func _on_minion_hurt(minion: Node):
     minion.die()
     minion.queue_free()
     _emit_number_change()
+    if minions.size() == 0:
+        Signals.game_over.emit()
 
 func _on_food_consumed(food: Node):
     _spawn(food.global_position - global_position)

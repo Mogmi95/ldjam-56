@@ -12,3 +12,22 @@ func _process(delta: float) -> void:
 
 func update_minions(minions_nbr: int) -> void:
     $Minions.text = str(minions_nbr)
+
+func show_message(text: String) -> void:
+    $Message.text = text
+    $Message.show()
+
+func show_game_over() -> void:
+    show_message("Game over")
+    $StartButton.show()
+    $QuitButton.show()
+
+func _on_quit_button_pressed() -> void:
+    get_tree().quit()
+
+
+func _on_start_button_pressed() -> void:
+    $StartButton.hide()
+    $QuitButton.hide()
+    $Message.hide()
+    Signals.start_game.emit()
