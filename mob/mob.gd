@@ -38,8 +38,6 @@ func _ready() -> void:
     $AggroRadius.scale.x = aggro_radius
     $AggroRadius.scale.y = aggro_radius / 2.0
 
-    $Healthbar.show()
-
     if show_healthbar:
         $Healthbar.show()
 
@@ -47,7 +45,7 @@ func _ready() -> void:
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
-func _on_signals_mob_hurt(mob: Node) -> void:
+func _on_signals_mob_hurt(mob: Mob) -> void:
     if mob == self:
         set_current_hp(_current_hp - (randi() % 2 + 1))
 #end
