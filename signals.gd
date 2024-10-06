@@ -14,6 +14,8 @@ signal mob_died(mob: Node)
 
 signal level_ended()
 
+signal game_over()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     food_spawned.is_null()
@@ -22,3 +24,5 @@ func _ready() -> void:
     minions_number_changed.is_null()
     mob_hurt.is_null()
     mob_died.is_null()
+    level_ended.is_null()
+    game_over.is_null()
