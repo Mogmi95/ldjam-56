@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED = 15000.0
 
 const DURATION_PREPARE_ATTACK = 0.5
 const DURATION_ATTACK = 1.0
@@ -13,7 +13,7 @@ enum State {
     DAMAGED,
 }
 
-var state : State = State.IDLE
+var state: State = State.IDLE
 var sprite
 
 var target: Node2D
@@ -53,7 +53,8 @@ func _physics_process(delta):
         if distance_to_leader > 5:
             velocity = global_position.direction_to(leader.global_position)
             velocity *= SPEED * delta
-            move_and_collide(velocity)
+            # move_and_collide(velocity)
+            move_and_slide()
         else:
             velocity = Vector2.ZERO
 
