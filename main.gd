@@ -3,6 +3,7 @@ extends Node
 # Starts at 1
 var level_nbr : int = 0
 var current_level_sc: Node2D = null
+var x_max : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,9 +13,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+    delta = delta
     pass
 
 func _input(event):
+    event = event
     pass
 
 
@@ -24,10 +27,15 @@ func new_game() -> void:
 
 # Transitions between levels should be handled here
 func load_level(lvl_nbr: int) -> void:
-    if current_level_sc:
-        call_deferred("remove_child", current_level_sc)
+    if current_level_sc != null:
+        x_max += current_level_sc.ending_x
+
     current_level_sc = load("res://levels/level_%s.tscn" % lvl_nbr).instantiate()
-    $CameraCollision.set_movement_and_back_collision(current_level_sc.should_camera_move)
+    current_level_sc.global_position.x = x_max
+    $CameraCollision.set_movement_and_back_collision(
+        current_level_sc.should_camera_move,
+        x_max - 1280
+    )
     $Player.set_boundaries(
         not current_level_sc.should_camera_move,
         current_level_sc.clamp_y,
