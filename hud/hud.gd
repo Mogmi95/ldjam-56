@@ -27,7 +27,7 @@ func show_message(text: String) -> void:
 
 func show_game_over() -> void:
     show_message("Game over")
-    $StartButton.show()
+    $RetryButton.show()
     $QuitButton.show()
 
 func update_dash(value: int) -> void:
@@ -66,7 +66,7 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_retry_button_pressed() -> void:
-    $StartButton.hide()
+    $RetryButton.hide()
     $QuitButton.hide()
     $Message.hide()
     Signals.start_game.emit()
