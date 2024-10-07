@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bgo5xlu70ifr5"]
+[gd_scene load_steps=24 format=3 uid="uid://bgo5xlu70ifr5"]
 
 [ext_resource type="Script" path="res://minion/minion.gd" id="1_xslsr"]
 [ext_resource type="Texture2D" uid="uid://bl2o7vhkqj2tl" path="res://assets/chomposaurus/atk.png" id="2_2s38t"]
 [ext_resource type="Texture2D" uid="uid://ty2j8vwawy77" path="res://assets/chomposaurus/shadow.png" id="2_x43bm"]
+[ext_resource type="AudioStream" uid="uid://de157ss7gk4yl" path="res://assets/sounds/aie.ogg" id="2_xtwue"]
 [ext_resource type="Texture2D" uid="uid://dr2ahqyjdfpr5" path="res://assets/chomposaurus/dmg.png" id="3_bywlp"]
 [ext_resource type="Texture2D" uid="uid://bs3b5xx7clj2l" path="res://assets/chomposaurus/chomp_idle1.png" id="3_gqqqa"]
 [ext_resource type="Texture2D" uid="uid://cr650ubgqe6r7" path="res://assets/chomposaurus/chomp_idle2.png" id="4_e046a"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dnexhanmmg1rx" path="res://assets/chomposaurus/run2.png" id="8_wssru"]
 [ext_resource type="Texture2D" uid="uid://bjldju0hnm3el" path="res://assets/chomposaurus/run3.png" id="9_bdo55"]
 [ext_resource type="Texture2D" uid="uid://bxqv7wfrrl2k1" path="res://assets/chomposaurus/run4.png" id="10_eekdd"]
+[ext_resource type="AudioStream" uid="uid://drn8f4mavp7nh" path="res://assets/sounds/walk.ogg" id="14_exuq7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ptiko"]
 radius = 6.255
@@ -207,6 +209,21 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Die")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_xtwue")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_alsmm"]
 _data = {
@@ -334,6 +351,13 @@ texture = ExtResource("2_x43bm")
 [node name="MinionHitbox1" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(3, 21)
 shape = SubResource("RectangleShape2D_n7a2a")
+
+[node name="Die" type="AudioStreamPlayer" parent="."]
+volume_db = -4.0
+
+[node name="Walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_exuq7")
+autoplay = true
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="PrepareAttackTimer" to="." method="_on_prepare_attack_timer_timeout"]

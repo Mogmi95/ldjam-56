@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgmxka3ris8ev"]
+[gd_scene load_steps=11 format=3 uid="uid://bgmxka3ris8ev"]
 
 [ext_resource type="Script" path="res://mob/mob.gd" id="1_4woou"]
 [ext_resource type="PackedScene" uid="uid://bc3aj8tuw7ss" path="res://mob/behavior_food.tscn" id="2_qyrd0"]
 [ext_resource type="PackedScene" uid="uid://dml8w82bj0e57" path="res://mob/animation_food.tscn" id="3_llri5"]
+[ext_resource type="AudioStream" uid="uid://daucxaeulacoq" path="res://assets/sounds/nom.ogg" id="4_uej1w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvg08"]
 resource_local_to_scene = true
@@ -93,3 +94,6 @@ position = Vector2(1, -88)
 libraries = {
 "": SubResource("AnimationLibrary_cbess")
 }
+
+[node name="Nom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_uej1w")

@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cskrmvq8iku8t"]
+[gd_scene load_steps=3 format=3 uid="uid://cskrmvq8iku8t"]
 
 [ext_resource type="Script" path="res://minion/minion_manager.gd" id="1_n5j6g"]
+[ext_resource type="AudioStream" uid="uid://daucxaeulacoq" path="res://assets/sounds/nom.ogg" id="2_65ard"]
 
 [node name="MinionManager" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_n5j6g")
+
+[node name="Nom" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_65ard")

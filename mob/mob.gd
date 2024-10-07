@@ -53,6 +53,7 @@ func _on_signals_mob_hurt(mob: Mob) -> void:
         if $MobAnimationPlayer.is_playing():
             $MobAnimationPlayer.stop()
         $MobAnimationPlayer.play("hurt")
+        $Nom.play()
         set_current_hp(_current_hp - (randi() % 2 + 1))
 #end
 

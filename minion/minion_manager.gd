@@ -56,6 +56,7 @@ func _on_minion_dead(minion: Node):
 
 func _on_food_consumed(food: Node):
     var pos = food.global_position
+    $Nom.play()
     for i in range(0, food.food_drop):
         pos = _generate_spiral_coordinate_given_iteration(pos, i)
         _spawn(pos)

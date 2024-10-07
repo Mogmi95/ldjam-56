@@ -106,6 +106,9 @@ func _notify_death():
 func force_walk(value: bool = true):
     forced_walk = value
 
+func force_mute():
+    $Die.volume_db = -80
+
     if forced_walk:
         sprite.animation = "walk"
         sprite.frame_progress = randf()
