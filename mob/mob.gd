@@ -49,6 +49,8 @@ func _ready() -> void:
 #-----------------------------------------------------------------------------------------------------------------------
 func _on_signals_mob_hurt(mob: Mob) -> void:
     if mob == self:
+        if $MobAnimationPlayer.is_playing():
+            $MobAnimationPlayer.stop()
         $MobAnimationPlayer.play("hurt")
         set_current_hp(_current_hp - (randi() % 2 + 1))
 #end
