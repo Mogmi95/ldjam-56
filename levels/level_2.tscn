@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dlji31rktlpcp"]
+[gd_scene load_steps=9 format=3 uid="uid://dlji31rktlpcp"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_20k1q"]
 [ext_resource type="Texture2D" uid="uid://cqgtv7lc3otyc" path="res://assets/playa/sea.png" id="2_te8k3"]
@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="4_q0437"]
 [ext_resource type="PackedScene" uid="uid://dv2mq7sqhekfp" path="res://mob/behavior_default.tscn" id="5_bw6rj"]
 [ext_resource type="PackedScene" uid="uid://3v4e7lsewuk0" path="res://mob/animation_default.tscn" id="6_nkebe"]
-[ext_resource type="PackedScene" uid="uid://bxpogcnmtsowy" path="res://Target.tscn" id="7_tlv2l"]
+[ext_resource type="PackedScene" path="res://Target.tscn" id="7_tlv2l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m8cad"]
+size = Vector2(209.777, 365.433)
 
 [node name="Level2" type="Node2D"]
 y_sort_enabled = true
@@ -45,3 +48,10 @@ vitals = [NodePath("Target")]
 [node name="Target" parent="Mob" instance=ExtResource("7_tlv2l")]
 visible = false
 position = Vector2(0, -170)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(72, 86)
+rotation = 0.708604
+shape = SubResource("RectangleShape2D_m8cad")

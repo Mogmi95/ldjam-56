@@ -43,6 +43,8 @@ func _ready() -> void:
     if is_boss():
         $Healthbar.show()
         _animation.position.y -= 100
+    else:
+        _animation.position.y -= 33
 
     Signals.mob_hurt.connect(_on_signals_mob_hurt)
 #end

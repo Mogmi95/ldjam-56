@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnxhag55i34qc"]
+[gd_scene load_steps=12 format=3 uid="uid://cnxhag55i34qc"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_38fns"]
 [ext_resource type="Texture2D" uid="uid://dibfascjppkqj" path="res://assets/toronto/nightsky.png" id="2_47a87"]
@@ -10,12 +10,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2l16s"]
 size = Vector2(2574, 257)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2om3n"]
-size = Vector2(529.5, 307.635)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nyu5j"]
+radius = 194.0
+height = 568.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n0kcr"]
+radius = 180.0
+height = 448.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v7cum"]
 radius = 246.08
 height = 628.377
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vul8s"]
+radius = 168.0
+height = 624.0
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_38fns")
@@ -47,7 +56,7 @@ position = Vector2(1277, 118.5)
 shape = SubResource("RectangleShape2D_2l16s")
 
 [node name="Obstacle" type="StaticBody2D" parent="."]
-position = Vector2(975, 369)
+position = Vector2(167, 512)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
@@ -57,20 +66,27 @@ scale = Vector2(2.25391, 2.25391)
 texture = ExtResource("4_r5u23")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
-position = Vector2(552, -232)
-shape = SubResource("RectangleShape2D_2om3n")
+position = Vector2(552, -258)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nyu5j")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Obstacle"]
-position = Vector2(99.25, 4.18225)
-shape = SubResource("RectangleShape2D_2om3n")
+position = Vector2(42, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_n0kcr")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Obstacle"]
-position = Vector2(234, -104)
+position = Vector2(226, -112)
 rotation = 1.01404
 shape = SubResource("CapsuleShape2D_v7cum")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Obstacle"]
+position = Vector2(436, -432)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vul8s")
+
 [node name="Obstacle2" type="StaticBody2D" parent="."]
-position = Vector2(1988, 472)
+position = Vector2(629, 671)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
@@ -80,20 +96,27 @@ scale = Vector2(2.25391, 2.25391)
 texture = ExtResource("4_r5u23")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2"]
-position = Vector2(552, -232)
-shape = SubResource("RectangleShape2D_2om3n")
+position = Vector2(552, -258)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nyu5j")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Obstacle2"]
-position = Vector2(99.25, 4.18225)
-shape = SubResource("RectangleShape2D_2om3n")
+position = Vector2(42, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_n0kcr")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Obstacle2"]
-position = Vector2(234, -104)
+position = Vector2(226, -112)
 rotation = 1.01404
 shape = SubResource("CapsuleShape2D_v7cum")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Obstacle2"]
+position = Vector2(436, -432)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vul8s")
+
 [node name="Obstacle3" type="StaticBody2D" parent="."]
-position = Vector2(1293, 641)
+position = Vector2(1243, 639)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
@@ -103,20 +126,27 @@ scale = Vector2(2.25391, 2.25391)
 texture = ExtResource("4_r5u23")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle3"]
-position = Vector2(552, -232)
-shape = SubResource("RectangleShape2D_2om3n")
+position = Vector2(552, -258)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nyu5j")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Obstacle3"]
-position = Vector2(99.25, 4.18225)
-shape = SubResource("RectangleShape2D_2om3n")
+position = Vector2(42, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_n0kcr")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Obstacle3"]
-position = Vector2(234, -104)
+position = Vector2(226, -112)
 rotation = 1.01404
 shape = SubResource("CapsuleShape2D_v7cum")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Obstacle3"]
+position = Vector2(436, -432)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vul8s")
+
 [node name="Obstacle4" type="StaticBody2D" parent="."]
-position = Vector2(262, 659)
+position = Vector2(1958, 467)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
@@ -126,58 +156,72 @@ scale = Vector2(2.25391, 2.25391)
 texture = ExtResource("4_r5u23")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle4"]
-position = Vector2(552, -232)
-shape = SubResource("RectangleShape2D_2om3n")
+position = Vector2(552, -258)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nyu5j")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Obstacle4"]
-position = Vector2(99.25, 4.18225)
-shape = SubResource("RectangleShape2D_2om3n")
+position = Vector2(42, 8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_n0kcr")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Obstacle4"]
-position = Vector2(234, -104)
+position = Vector2(226, -112)
 rotation = 1.01404
 shape = SubResource("CapsuleShape2D_v7cum")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Obstacle4"]
+position = Vector2(436, -432)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vul8s")
+
 [node name="Food" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
-position = Vector2(543, 653)
-aggro_radius = 40
+position = Vector2(154, 296)
+aggro_radius = 10
 hit_points = 1
 food_drop = 5
 vitals = [NodePath(".")]
 
 [node name="Food2" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
-position = Vector2(873, 275)
-aggro_radius = 40
+position = Vector2(352, 655)
+aggro_radius = 10
 hit_points = 1
-food_drop = 3
+food_drop = 5
 vitals = [NodePath(".")]
 
 [node name="Food3" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
-position = Vector2(2335, 257)
-aggro_radius = 40
+position = Vector2(628, 302)
+aggro_radius = 10
 hit_points = 1
 food_drop = 5
 vitals = [NodePath(".")]
 
 [node name="Food4" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
-position = Vector2(2229, 254)
-aggro_radius = 40
+position = Vector2(949, 691)
+aggro_radius = 10
 hit_points = 1
-food_drop = 6
+food_drop = 5
 vitals = [NodePath(".")]
 
 [node name="Food5" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
-position = Vector2(2126, 259)
-aggro_radius = 40
+position = Vector2(1501, 291)
+aggro_radius = 10
 hit_points = 1
-food_drop = 4
+food_drop = 5
 vitals = [NodePath(".")]
 
 [node name="Food6" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
-position = Vector2(1980, 662)
-aggro_radius = 40
+position = Vector2(2473, 310)
+aggro_radius = 10
 hit_points = 1
-food_drop = 3
+food_drop = 5
+vitals = [NodePath(".")]
+
+[node name="Food7" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
+position = Vector2(1945, 655)
+aggro_radius = 10
+hit_points = 1
+food_drop = 5
 vitals = [NodePath(".")]
 
 [node name="StoryTrigger" parent="." instance=ExtResource("6_ot3dl")]
