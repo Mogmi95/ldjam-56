@@ -14,9 +14,8 @@ func _ready() -> void:
 
 func _input(event) -> void:
     if dialog != null:
-        if Input.is_action_pressed("player_dash"):
+        if Input.is_action_just_released("player_dash"):
             show_next_dialog()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

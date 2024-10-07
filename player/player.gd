@@ -29,6 +29,11 @@ func _input(event):
         currently_used_controller = Controller.MOUSE
     else:
         currently_used_controller = Controller.KEYBOARD
+    if Input.is_action_just_pressed("player_dash"):
+        # Everything ready to dash
+        if $DashTimeout.is_stopped() and $DashTimer.is_stopped() and not get_tree().paused:
+            $DashTimer.start()
+            dash_speed = 2
 
 func reset_dash() -> void:
     $DashTimer.stop()
@@ -38,12 +43,6 @@ func reset_dash() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     var velocity = Vector2.ZERO
-
-    if Input.is_action_pressed("player_dash"):
-        # Everything ready to dash
-        if $DashTimeout.is_stopped() and $DashTimer.is_stopped():
-            $DashTimer.start()
-            dash_speed = 2
 
     if currently_used_controller == Controller.KEYBOARD:
         if Input.is_action_pressed("player_right"):
