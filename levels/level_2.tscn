@@ -39,7 +39,7 @@ apm = 10.0
 hit_points = 50
 aoe_range = 100
 aoe_size = Vector2(10, 3)
-food_drop = 1
+food_drop = 10
 vitals = [NodePath("Target")]
 
 [node name="Target" parent="Mob" instance=ExtResource("7_tlv2l")]

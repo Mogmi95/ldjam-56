@@ -21,10 +21,10 @@ func spawn_mob():
 
 func spawn_food(mob_position: Vector2, quantity_of_food_to_drop):
     var new_food = MobFactory.create_food()
-    # TODO Spawn where the boss was
-    new_food.position = Vector2(0, 0)
-    # TODO Spawn more food
     add_child(new_food)
+    new_food.global_position = mob_position
+    new_food.name = str(quantity_of_food_to_drop)
+    new_food.food_drop = quantity_of_food_to_drop
 
 func _on_food_consumed(food: Node):
     food.hide()

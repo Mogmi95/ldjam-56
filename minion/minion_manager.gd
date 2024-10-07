@@ -23,8 +23,10 @@ func set_minimum_number_of_minions(min_number_of_minions: int):
 
 func _spawn_minimum_number_of_minions():
     if minions.size() < minimum_number_of_minions:
+        var pos = leader.global_position
         for i in range(minions.size(), minimum_number_of_minions):
-            _spawn(generate_new_minion_position())
+            pos = _generate_spiral_coordinate_given_iteration(pos, i)
+            _spawn(pos)
 
 # Find an empty space to spawn a new minion
 func generate_new_minion_position():
@@ -36,11 +38,11 @@ func generate_new_minion_position():
 
 func _spawn(pos: Vector2):
     var minion = minion_scene.instantiate()
-    minion.position = pos
     minion.set_leader(leader)
     minion.set_target(target)
     minions.append(minion)
     add_child(minion)
+    minion.global_position = pos
     minion.name = "Minion"
     _emit_number_change()
     return minion
@@ -53,7 +55,22 @@ func _on_minion_dead(minion: Node):
         Signals.game_over.emit()
 
 func _on_food_consumed(food: Node):
-    _spawn(food.global_position - global_position)
+    var pos = food.global_position
+    for i in range(0, food.food_drop):
+        pos = _generate_spiral_coordinate_given_iteration(pos, i)
+        _spawn(pos)
+
+func _generate_spiral_coordinate_given_iteration(pos: Vector2, iteration: int):
+    var unit = 1
+    match (iteration % 4):
+        0:
+            return pos + Vector2(0, unit)
+        1:
+            return pos + Vector2(unit, 0)
+        2:
+            return pos - Vector2(0, unit)
+        3:
+            return pos - Vector2(unit, 0)
 
 func _emit_number_change() -> void:
     Signals.minions_number_changed.emit(minions.size())
