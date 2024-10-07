@@ -30,6 +30,9 @@ func _process(delta: float) -> void:
             _unload_level(precedent_level_sc)
             precedent_level_sc = null
 
+            if level_nbr == 6:
+                current_level_sc.get_node("Background").show()
+
         if $CameraCollision.position.x >= (x_offset + current_level_sc.loading_checkpoint):
             _change_level()
 
@@ -86,7 +89,7 @@ func _unload_level(level: Level) -> void:
 
 # Called when level_ended signal is triggered
 func _change_level() -> void:
-    if level_nbr >= 5:
+    if level_nbr >= 6:
         return
 
     level_nbr += 1
@@ -107,23 +110,24 @@ func _on_post_fight_timer_timeout() -> void:
 
 func dezoom(delta: float) -> void:
     var level = precedent_level_sc if precedent_level_sc else current_level_sc
-    var foreground: Sprite2D = level.get_node("Foreground")
     var zoom_target = 0.67
     var dezoom_value = delta * (1.0 - zoom_target) / $PostFightTimer.wait_time
     var dezoom_vec = delta * (Vector2(dezoom_offset, -360) - $CameraCollision.global_position) / $PostFightTimer.wait_time
 
-    foreground.scale.x -= dezoom_value
-    foreground.scale.y -= dezoom_value
-    foreground.global_position -= dezoom_vec
+    if level_nbr != 6:
+        var foreground: Sprite2D = level.get_node("Foreground")
+        foreground.scale.x -= dezoom_value
+        foreground.scale.y -= dezoom_value
+        foreground.global_position -= dezoom_vec
 
-    $Player.scale.x -= dezoom_value
-    $Player.scale.y -= dezoom_value
+        $Player.scale.x -= dezoom_value
+        $Player.scale.y -= dezoom_value
 
-    $MinionManager.scale.x -= dezoom_value
-    $MinionManager.scale.y -= dezoom_value
+        $MinionManager.scale.x -= dezoom_value
+        $MinionManager.scale.y -= dezoom_value
 
-    for minion in $MinionManager.get_children():
-        minion.global_position += minion.global_position * dezoom_value
+        for minion in $MinionManager.get_children():
+            minion.global_position += minion.global_position * dezoom_value
 #end
 
 # Triggers
