@@ -119,9 +119,13 @@ food_drop = 2
 vitals = [NodePath(".")]
 
 [node name="MusicTriggerBass" parent="." instance=ExtResource("6_3n116")]
-position = Vector2(1233, 431)
+position = Vector2(961, 411)
 music_flag = "bass"
 
 [node name="StoryTriggerBoss1" parent="." instance=ExtResource("7_siurc")]
-position = Vector2(2252, 410)
+position = Vector2(2087, 382)
 story_flag = "boss_1"
+
+[node name="MusicTriggerBoss1" parent="." instance=ExtResource("6_3n116")]
+position = Vector2(2434, 383)
+music_flag = "boss_1"
