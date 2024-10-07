@@ -103,10 +103,12 @@ func _on_minion_hurt(minion: Node, source: Node):
 func _notify_death():
     Signals.minion_dead.emit(self)
 
-func force_walk():
-    forced_walk = true
-    sprite.animation = "walk"
-    sprite.frame_progress = randf()
+func force_walk(value: bool = true):
+    forced_walk = value
+
+    if forced_walk:
+        sprite.animation = "walk"
+        sprite.frame_progress = randf()
 
 func _on_attack_timer_timeout() -> void:
     if state == State.DEAD:
@@ -172,7 +174,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
     if area.name == "AggroRadius":
         if state == State.IDLE or state == State.WALK:
             set_target(area.get_parent())
-
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:

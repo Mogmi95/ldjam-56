@@ -5,6 +5,7 @@ var level_nbr: int = 0
 var precedent_level_sc: Level = null
 var current_level_sc: Level = null
 var x_offset: int = 0
+var zoom_value = 1.0
 var dezoom_offset: int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -101,33 +102,49 @@ func _on_mob_died(mob: Mob) -> void:
         dezoom_offset = x_offset
         $PostFightTimer.start()
         _change_level()
+
+        for minion in $MinionManager.get_children():
+            minion.force_walk()
 #end
 
 func _on_post_fight_timer_timeout() -> void:
+    zoom_value *= 2.0 / 3.0
+    for minion in $MinionManager.get_children():
+        minion.force_walk(false)
     $CameraCollision.set_destination_and_back_collision(current_level_sc.should_camera_move,
                                                         x_offset + current_level_sc.camera_where_to)
 #end
 
 func dezoom(delta: float) -> void:
+    if level_nbr == 6:
+        return
+
     var level = precedent_level_sc if precedent_level_sc else current_level_sc
-    var zoom_target = 0.67
-    var dezoom_value = delta * (1.0 - zoom_target) / $PostFightTimer.wait_time
-    var dezoom_vec = delta * (Vector2(dezoom_offset, -360) - $CameraCollision.global_position) / $PostFightTimer.wait_time
+    var map_zoom_target = 0.67
+    var map_dezoom_value = delta * (1.0 - map_zoom_target) / $PostFightTimer.wait_time
+    var map_dezoom_vec = delta * (Vector2(dezoom_offset, -360) - $CameraCollision.global_position) / $PostFightTimer.wait_time
 
-    if level_nbr != 6:
-        var foreground: Sprite2D = level.get_node("Foreground")
-        foreground.scale.x -= dezoom_value
-        foreground.scale.y -= dezoom_value
-        foreground.global_position -= dezoom_vec
+    var foreground: Sprite2D = level.get_node("Foreground")
+    foreground.scale.x -= map_dezoom_value
+    foreground.scale.y -= map_dezoom_value
+    foreground.global_position -= map_dezoom_vec
 
-        $Player.scale.x -= dezoom_value
-        $Player.scale.y -= dezoom_value
+    var zoom_target = zoom_value * 2.0 / 3.0
+    var dezoom_value = delta * (zoom_value - zoom_target) / $PostFightTimer.wait_time
 
-        $MinionManager.scale.x -= dezoom_value
-        $MinionManager.scale.y -= dezoom_value
+    $Player.scale.x -= dezoom_value
+    $Player.scale.y -= dezoom_value
 
-        for minion in $MinionManager.get_children():
-            minion.global_position += minion.global_position * dezoom_value
+    var minion_positions: Array
+
+    for minion in $MinionManager.get_children():
+        minion_positions.append(minion.global_position)
+
+    $MinionManager.scale.x -= dezoom_value
+    $MinionManager.scale.y -= dezoom_value
+
+    for minion in $MinionManager.get_children():
+        minion.global_position = minion_positions.pop_front()
 #end
 
 # Triggers
