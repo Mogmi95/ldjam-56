@@ -17,6 +17,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     if  current_level_sc != null:
+        _update_hud()
         if $CameraCollision.position.x >= (x_offset + current_level_sc.loading_checkpoint):
             _change_level()
 
@@ -25,6 +26,9 @@ func _process(delta: float) -> void:
         if !$PostFightTimer.is_stopped():
             dezoom(delta)
 #end
+
+func _update_hud() -> void:
+    $HUD.update_dash($Player.get_dash_value())
 
 func new_game() -> void:
     $MainMenu.hide()

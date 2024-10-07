@@ -10,6 +10,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
     pass
 
+
 func update_minions(minions_nbr: int) -> void:
     $Minions.text = str(minions_nbr)
 
@@ -21,6 +22,9 @@ func show_game_over() -> void:
     show_message("Game over")
     $StartButton.show()
     $QuitButton.show()
+
+func update_dash(value: int) -> void:
+    $TextureProgressBar.value = value
 
 func _on_quit_button_pressed() -> void:
     get_tree().quit()

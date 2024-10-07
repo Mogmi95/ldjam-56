@@ -44,10 +44,12 @@ func _process(delta: float) -> void:
     if forced_walk:
         sprite.animation = "walk"
     else:
+        $AnimationPlayer.speed_scale = leader.dash_speed
         match (state):
             State.IDLE, State.WALK:
                 if has_minion_significantly_moved:
                     sprite.animation = "walk"
+                    $AnimationPlayer.speed_scale = leader.dash_speed
                     sprite.flip_h = velocity.x < 0
                 else:
                     sprite.animation = "idle"
@@ -66,7 +68,7 @@ func _physics_process(delta):
         var distance_to_leader = global_position.distance_to(leader.global_position)
         if distance_to_leader > 5:
             velocity = global_position.direction_to(leader.global_position)
-            velocity *= SPEED * delta
+            velocity *= SPEED * leader.dash_speed * delta
             # move_and_collide(velocity)
             move_and_slide()
         else:
