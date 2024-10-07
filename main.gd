@@ -184,7 +184,7 @@ func _on_story_trigger(flag):
     match (flag):
         "first":
             Signals.start_display_dialog.emit([
-                ["bird", "DEATH TO THIS WORLD!"],
+                ["bird", "There is no respect for little animals anymore! I'll show them with my ARMY!"],
                 ["minion", "Rrrrrrrr!"]
             ])
         "boss_1":
