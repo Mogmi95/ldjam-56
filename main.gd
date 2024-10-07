@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 
         $Player.set_boundaries(true, current_level_sc.clamp_y, $CameraCollision.position.x)
 
-        if !$PostFightTimer.is_stopped():
+        if !$PostFightTimer.is_stopped() and level_nbr < 6:
             dezoom(delta)
 #end
 
@@ -51,6 +51,7 @@ func new_game() -> void:
     $MainMenu.hide()
     $Player.show()
     $HUD.show()
+    $Player.reset_dash()
     # Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
     current_level_sc = null
     $CameraCollision.position = Vector2.ZERO
@@ -114,7 +115,7 @@ func _unload_level(level: Level) -> void:
 
 # Called when level_ended signal is triggered
 func _change_level() -> void:
-    if level_nbr >= 6:
+    if level_nbr >= 7:
         return
 
     level_nbr += 1

@@ -30,6 +30,11 @@ func _input(event):
     else:
         currently_used_controller = Controller.KEYBOARD
 
+func reset_dash() -> void:
+    $DashTimer.stop()
+    $DashTimeout.stop()
+    dash_speed = 1
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     var velocity = Vector2.ZERO
