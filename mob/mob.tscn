@@ -23,6 +23,9 @@ border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_difm4"]
 
+[sub_resource type="Animation" id="Animation_vx2ak"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_tk043"]
 resource_name = "hurt"
 length = 0.3
@@ -43,9 +46,6 @@ tracks/0/keys = {
 "method": &"_change_mob_color"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_vx2ak"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cbess"]
 _data = {

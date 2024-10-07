@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://main.gd" id="1_1vjo6"]
 [ext_resource type="PackedScene" uid="uid://mc77u87jftr" path="res://player/player.tscn" id="1_8m0ob"]
 [ext_resource type="PackedScene" uid="uid://cskrmvq8iku8t" path="res://minion/MinionManager.tscn" id="2_whvwy"]
-[ext_resource type="PackedScene" uid="uid://584fcxf4njsb" path="res://mob/mob_manager.tscn" id="4_sbqbv"]
+[ext_resource type="PackedScene" path="res://mob/mob_manager.tscn" id="4_sbqbv"]
 [ext_resource type="PackedScene" uid="uid://ca86ciqxq5cax" path="res://camera/camera_collision.tscn" id="4_ysbqa"]
 [ext_resource type="PackedScene" uid="uid://k5d3jg38igg2" path="res://hud/hud.tscn" id="5_j7bnl"]
 [ext_resource type="PackedScene" uid="uid://b3woyec3jy3ye" path="res://hud/main_menu.tscn" id="7_00srs"]
@@ -14,6 +14,7 @@ script = ExtResource("1_1vjo6")
 
 [node name="Player" parent="." instance=ExtResource("1_8m0ob")]
 position = Vector2(623, 355)
+scale = Vector2(1, 1)
 
 [node name="MinionManager" parent="." node_paths=PackedStringArray("leader") instance=ExtResource("2_whvwy")]
 z_index = 1

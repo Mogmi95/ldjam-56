@@ -86,6 +86,9 @@ func dezoom(delta: float) -> void:
     foreground.scale.y -= dezoom_value
     foreground.global_position -= dezoom_vec
 
+    $Player.scale.x -= dezoom_value
+    $Player.scale.y -= dezoom_value
+
     $MinionManager.scale.x -= dezoom_value
     $MinionManager.scale.y -= dezoom_value
 

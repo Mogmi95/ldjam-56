@@ -1,14 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://mc77u87jftr"]
+[gd_scene load_steps=5 format=3 uid="uid://mc77u87jftr"]
 
-[ext_resource type="Texture2D" uid="uid://csndww5jg3dsj" path="res://assets/player/dot.png" id="1_moajl"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_na4xu"]
+[ext_resource type="Texture2D" uid="uid://bisfr0rb77nwq" path="res://assets/player/chick1.png" id="2_xxfx6"]
+[ext_resource type="Texture2D" uid="uid://duqhmclifchcc" path="res://assets/player/chick2.png" id="3_uchb4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e1g6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xxfx6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uchb4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Player" type="Node2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_na4xu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_moajl")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 2
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_e1g6f")
+autoplay = "default"
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 3.0
