@@ -63,22 +63,22 @@ AnimationScene = ExtResource("3_llri5")
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = -505.0
-offset_top = 295.0
-offset_right = -465.0
-offset_bottom = 335.0
+offset_left = -108.0
+offset_top = 48.0
+offset_right = -46.0
+offset_bottom = 88.0
+metadata/_edit_group_ = true
 
 [node name="Background" type="Panel" parent="Healthbar"]
 layout_mode = 0
-offset_right = 1018.0
+offset_right = 216.0
 offset_bottom = 18.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_wvg08")
 
 [node name="Foreground" type="Panel" parent="Healthbar"]
 layout_mode = 0
-offset_right = 1018.0
-offset_bottom = 18.0
-scale = Vector2(0.5, 1)
+offset_right = 214.0
+offset_bottom = 17.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ymbhr")
 
 [node name="AggroRadius" type="Area2D" parent="."]

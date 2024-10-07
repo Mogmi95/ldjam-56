@@ -40,8 +40,9 @@ func _ready() -> void:
     $AggroRadius.scale.x = aggro_radius
     $AggroRadius.scale.y = aggro_radius / 2.0
 
-    if show_healthbar:
+    if is_boss():
         $Healthbar.show()
+        _animation.position.y -= 100
 
     Signals.mob_hurt.connect(_on_signals_mob_hurt)
 #end
