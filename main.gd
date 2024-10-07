@@ -82,6 +82,9 @@ func _unload_level(level: Level) -> void:
 
 # Called when level_ended signal is triggered
 func _change_level() -> void:
+    if level_nbr >= 3:
+        return
+
     level_nbr += 1
     load_level(level_nbr)
 #end

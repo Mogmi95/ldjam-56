@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="4_q0437"]
 [ext_resource type="PackedScene" uid="uid://dv2mq7sqhekfp" path="res://mob/behavior_default.tscn" id="5_bw6rj"]
 [ext_resource type="PackedScene" uid="uid://3v4e7lsewuk0" path="res://mob/animation_default.tscn" id="6_nkebe"]
-[ext_resource type="PackedScene" uid="uid://bxpogcnmtsowy" path="res://Target.tscn" id="7_tlv2l"]
+[ext_resource type="PackedScene" path="res://Target.tscn" id="7_tlv2l"]
 
 [node name="Level2" type="Node2D"]
 y_sort_enabled = true

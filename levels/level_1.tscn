@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bny0d54wh2qg7" path="res://assets/playa/trunk.png" id="4_n8pmp"]
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="5_80a07"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_jg2d2"]
-b = Vector2(0, 720)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x50ca"]
+size = Vector2(2578, 314)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6irry"]
 radius = 72.0
@@ -16,7 +16,7 @@ height = 551.157
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_qoqef")
 should_camera_move = true
-clamp_y = Vector2i(150, 720)
+clamp_y = Vector2i(238, 720)
 level_width = 2560
 camera_where_to = 2560
 loading_checkpoint = 1280
@@ -37,10 +37,11 @@ scale = Vector2(0.67, 0.67)
 texture = ExtResource("3_umjut")
 centered = false
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("SegmentShape2D_jg2d2")
+position = Vector2(1279, 147)
+shape = SubResource("RectangleShape2D_x50ca")
 
 [node name="Obstacle" type="StaticBody2D" parent="."]
 position = Vector2(1246, 477)
@@ -111,5 +112,3 @@ position = Vector2(1012, 407)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]

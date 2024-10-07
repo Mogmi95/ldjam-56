@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="4_3okux"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cv5nd"]
-size = Vector2(1288, 334)
+size = Vector2(2582, 303)
 
 [node name="Level0" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_qqq2a")
 minimum_number_of_minions = 2
-clamp_y = Vector2i(360, 720)
+clamp_y = Vector2i(238, 720)
 level_width = 1280
 camera_where_to = 1280
 
@@ -40,5 +40,5 @@ vitals = [NodePath(".")]
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(640, 163)
+position = Vector2(1287, 147.5)
 shape = SubResource("RectangleShape2D_cv5nd")
