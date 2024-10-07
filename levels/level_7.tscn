@@ -34,7 +34,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_8iocj")
 theme_override_font_sizes/font_size = 200
-text = "Congratulations!"
+text = "Congratulations"
 horizontal_alignment = 1
 vertical_alignment = 2
 
@@ -45,6 +45,6 @@ offset_right = 1237.0
 offset_bottom = 596.0
 theme_override_fonts/font = ExtResource("3_8iocj")
 theme_override_font_sizes/font_size = 80
-text = "Quickly and dirtly made with love by Mogmi, Roulyo and Spiderboy"
+text = "Quickly and dirtly made with love by Mogmi Roulyo and Spiderboy"
 horizontal_alignment = 1
 vertical_alignment = 1
