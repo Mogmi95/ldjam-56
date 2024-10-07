@@ -1,10 +1,12 @@
 extends CanvasLayer
 
 
+var avatar_bird = load()
+var avatar_minion = load()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Signals.minions_number_changed.connect(update_minions)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -25,6 +27,9 @@ func show_game_over() -> void:
 
 func update_dash(value: int) -> void:
     $TextureProgressBar.value = value
+
+func show_dialog(dialog):
+    pass
 
 func _on_quit_button_pressed() -> void:
     get_tree().quit()

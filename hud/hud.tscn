@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://k5d3jg38igg2"]
+[gd_scene load_steps=6 format=3 uid="uid://k5d3jg38igg2"]
 
 [ext_resource type="Script" path="res://hud/hud.gd" id="1_pyxd5"]
 [ext_resource type="FontFile" uid="uid://bjlcxvwf8wb12" path="res://fonts/Jurassic_Park.ttf" id="2_ac20b"]
 [ext_resource type="Texture2D" uid="uid://b3a8bnpllyuhj" path="res://assets/hud/under.png" id="3_81lf1"]
 [ext_resource type="Texture2D" uid="uid://b35dtgobywvyx" path="res://assets/hud/progress.png" id="4_2nl47"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_rfqym"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_pyxd5")
@@ -81,6 +83,45 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture_under = ExtResource("3_81lf1")
 texture_progress = ExtResource("4_2nl47")
+
+[node name="BlaBlaContainer" type="Panel" parent="."]
+offset_left = 75.0
+offset_top = 530.0
+offset_right = 1220.0
+offset_bottom = 693.0
+
+[node name="ColorRect" type="ColorRect" parent="BlaBlaContainer"]
+offset_left = 15.0
+offset_top = 13.0
+offset_right = 150.0
+offset_bottom = 150.0
+color = Color(1, 0.305882, 0.176471, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BlaBlaContainer/ColorRect"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 129.0
+offset_bottom = 131.0
+
+[node name="Avatar" type="TextureRect" parent="BlaBlaContainer/ColorRect/ColorRect"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 122.0
+offset_bottom = 127.0
+texture = SubResource("ImageTexture_rfqym")
+expand_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BlaBlaContainer"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 11.0
+offset_right = 1124.0
+offset_bottom = 152.0
+theme_override_font_sizes/normal_font_size = 30
+text = "I am tired of this world!"
+fit_content = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
