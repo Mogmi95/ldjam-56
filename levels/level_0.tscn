@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bv6j0isfrgpw3"]
+[gd_scene load_steps=7 format=3 uid="uid://bv6j0isfrgpw3"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_qqq2a"]
 [ext_resource type="Texture2D" uid="uid://cqgtv7lc3otyc" path="res://assets/playa/sea.png" id="2_4tbal"]
 [ext_resource type="Texture2D" uid="uid://1ujo1l5xf84b" path="res://assets/playa/playa.png" id="3_ixhkl"]
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="4_3okux"]
+[ext_resource type="PackedScene" uid="uid://qcrxydug0eu2" path="res://triggers/StoryTrigger.tscn" id="5_rlmvm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cv5nd"]
 size = Vector2(2582, 303)
@@ -42,3 +43,7 @@ vitals = [NodePath(".")]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1287, 147.5)
 shape = SubResource("RectangleShape2D_cv5nd")
+
+[node name="StoryTrigger" parent="." instance=ExtResource("5_rlmvm")]
+position = Vector2(1373, 390)
+story_flag = "first"

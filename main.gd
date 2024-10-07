@@ -13,6 +13,10 @@ func _ready() -> void:
     Signals.game_over.connect(game_over)
     Signals.start_game.connect(new_game)
     Signals.mob_died.connect(_on_mob_died)
+
+    Signals.music_trigger.connect(_on_music_trigger)
+    Signals.story_trigger.connect(_on_story_trigger)
+
     $PostFightTimer.timeout.connect(_on_post_fight_timer_timeout)
     $Player.hide()
     $HUD.hide()
@@ -42,7 +46,7 @@ func new_game() -> void:
     $MainMenu.hide()
     $Player.show()
     $HUD.show()
-    Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+    # Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
     current_level_sc = null
     $CameraCollision.position = Vector2.ZERO
     level_nbr = 0
@@ -121,3 +125,28 @@ func dezoom(delta: float) -> void:
     for minion in $MinionManager.get_children():
         minion.global_position += minion.global_position * dezoom_value
 #end
+
+# Triggers
+
+func _on_music_trigger(flag):
+    match (flag):
+        "first_boss":
+            $"Music/Boss Too Much".volume_db = 0
+        "bass":
+            $"Music/Bass".volume_db = 0
+        _:
+            print("WARNING: UNKNOWN EVENT ", flag)
+
+func _on_story_trigger(flag):
+    match (flag):
+        "first":
+            Signals.start_display_dialog.emit([
+                ["bird", "DEATH TO THIS WORLD!"],
+                ["minion", "Rrrrrrrr!"]
+            ])
+        "boss_1":
+            Signals.start_display_dialog.emit([
+                ["cathy", "Wanna eat this hotdog, little friends?"],
+            ])
+        _:
+            print("WARNING: UNKNOWN STORY FLAG ", flag)

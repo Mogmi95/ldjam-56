@@ -12,4 +12,4 @@ func _process(delta) -> void:
 
 func set_destination_and_back_collision(should_kill: bool, destination: int) -> void:
     where_to = destination
-    $Area2D/CollisionShape2D.set_deferred("disabled", not should_kill)
+    $CameraArea2D/CameraCollisionShape.set_deferred("disabled", not should_kill)

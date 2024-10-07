@@ -24,6 +24,10 @@ signal game_over()
 
 signal start_game()
 
+signal music_trigger(flag)
+
+signal story_trigger(flag)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     food_spawned.is_null()
@@ -35,3 +39,5 @@ func _ready() -> void:
     level_ended.is_null()
     game_over.is_null()
     start_game.is_null()
+    music_trigger.is_null()
+    story_trigger.is_null()

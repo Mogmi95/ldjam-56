@@ -4,6 +4,7 @@ extends CanvasLayer
 var dialog = null
 var avatar_bird = load("res://assets/player/chick1.png")
 var avatar_minion = load("res://assets/chomposaurus/chomp_idle1.png")
+var avatar_cathy = load("res://assets/cathy_attack.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -56,6 +57,8 @@ func show_next_dialog():
             $BlaBlaContainer/ColorRect/ColorRect/Avatar.texture = avatar_bird
         "minion":
             $BlaBlaContainer/ColorRect/ColorRect/Avatar.texture = avatar_minion
+        "cathy":
+            $BlaBlaContainer/ColorRect/ColorRect/Avatar.texture = avatar_cathy
     $BlaBlaContainer/BlaBlaText.text = next_message[1]
 
 func _on_quit_button_pressed() -> void:
@@ -67,3 +70,4 @@ func _on_start_button_pressed() -> void:
     $QuitButton.hide()
     $Message.hide()
     Signals.start_game.emit()
+    Signals.start_first_music_layer.emit()
