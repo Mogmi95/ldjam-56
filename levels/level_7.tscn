@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgqn0b6jn64ap"]
+[gd_scene load_steps=7 format=3 uid="uid://dgqn0b6jn64ap"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_7s0uu"]
 [ext_resource type="Texture2D" uid="uid://b6s3f20qylb7l" path="res://assets/galaxy/galaxy.png" id="2_f8ckl"]
 [ext_resource type="FontFile" uid="uid://bjlcxvwf8wb12" path="res://fonts/Jurassic_Park.ttf" id="3_8iocj"]
+[ext_resource type="Script" path="res://levels/final_destruction.gd" id="4_jq3k3"]
+[ext_resource type="PackedScene" uid="uid://bxpogcnmtsowy" path="res://Target.tscn" id="5_wyc1j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i48x4"]
+size = Vector2(981.5, 181.5)
 
 [node name="Level7" type="Node2D"]
 y_sort_enabled = true
@@ -12,6 +17,39 @@ clamp_y = Vector2i(0, 720)
 level_width = 1600
 camera_where_to = -1
 loading_checkpoint = 1920
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("vitals")]
+script = ExtResource("4_jq3k3")
+vitals = [NodePath("Vitals/Target"), NodePath("Vitals/Target2"), NodePath("Vitals/Target3"), NodePath("Vitals/Target4"), NodePath("Vitals/Target5"), NodePath("Vitals/Target6")]
+
+[node name="Vitals" type="Node2D" parent="Node2D"]
+visible = false
+position = Vector2(215, 10.5)
+
+[node name="Target" parent="Node2D/Vitals" instance=ExtResource("5_wyc1j")]
+position = Vector2(64, 180.5)
+
+[node name="Target2" parent="Node2D/Vitals" instance=ExtResource("5_wyc1j")]
+position = Vector2(187, 182.5)
+
+[node name="Target3" parent="Node2D/Vitals" instance=ExtResource("5_wyc1j")]
+position = Vector2(318, 176.5)
+
+[node name="Target4" parent="Node2D/Vitals" instance=ExtResource("5_wyc1j")]
+position = Vector2(442, 176.5)
+
+[node name="Target5" parent="Node2D/Vitals" instance=ExtResource("5_wyc1j")]
+position = Vector2(568, 179.5)
+
+[node name="Target6" parent="Node2D/Vitals" instance=ExtResource("5_wyc1j")]
+position = Vector2(697, 174.5)
+
+[node name="AggroRadius" type="Area2D" parent="Node2D"]
+position = Vector2(183, 328)
+
+[node name="BOX" type="CollisionShape2D" parent="Node2D/AggroRadius"]
+position = Vector2(438, 58)
+shape = SubResource("RectangleShape2D_i48x4")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
