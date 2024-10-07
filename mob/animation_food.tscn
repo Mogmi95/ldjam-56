@@ -1,19 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://dml8w82bj0e57"]
+[gd_scene load_steps=7 format=3 uid="uid://dml8w82bj0e57"]
 
-[ext_resource type="Texture2D" uid="uid://j3q7wjmt8p5b" path="res://assets/gigot.png" id="1_14c5e"]
+[ext_resource type="Texture2D" uid="uid://bfw3r8q46ac3s" path="res://assets/egg.png" id="1_gm6o0"]
+[ext_resource type="Texture2D" uid="uid://brw17y4wsn7rx" path="res://assets/little_egg.png" id="2_bybfl"]
+[ext_resource type="Texture2D" uid="uid://ty2j8vwawy77" path="res://assets/chomposaurus/shadow.png" id="3_1mihu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xog2b"]
+atlas = ExtResource("1_gm6o0")
+region = Rect2(0, 0, 900, 1031)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lmq1"]
+atlas = ExtResource("2_bybfl")
+region = Rect2(0, 0, 900, 1031)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_h4bgb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_14c5e")
+"texture": SubResource("AtlasTexture_xog2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lmq1")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="Sprite2D" type="AnimatedSprite2D"]
 scale = Vector2(0.1, 0.108)
 sprite_frames = SubResource("SpriteFrames_h4bgb")
 animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.282331
+
+[node name="EggShadow" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, 444.444)
+scale = Vector2(8.375, 9.5947)
+texture = ExtResource("3_1mihu")
