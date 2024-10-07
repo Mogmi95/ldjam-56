@@ -2,9 +2,9 @@ extends CanvasLayer
 
 
 var dialog = null
-var avatar_bird = load("res://assets/player/chick1.png")
-var avatar_minion = load("res://assets/chomposaurus/chomp_idle1.png")
-var avatar_cathy = load("res://assets/cathy_attack.png")
+var avatar_bird = load("res://assets/dialogs/bird.png")
+var avatar_minion = load("res://assets/dialogs/raptor.png")
+var avatar_cathy = load("res://assets/dialogs/girl.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

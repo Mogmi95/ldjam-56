@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://k5d3jg38igg2"]
+[gd_scene load_steps=5 format=3 uid="uid://k5d3jg38igg2"]
 
 [ext_resource type="Script" path="res://hud/hud.gd" id="1_pyxd5"]
 [ext_resource type="FontFile" uid="uid://bjlcxvwf8wb12" path="res://fonts/Jurassic_Park.ttf" id="2_ac20b"]
 [ext_resource type="Texture2D" uid="uid://b3a8bnpllyuhj" path="res://assets/hud/under.png" id="3_81lf1"]
 [ext_resource type="Texture2D" uid="uid://b35dtgobywvyx" path="res://assets/hud/progress.png" id="4_2nl47"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_rfqym"]
 
 [node name="HUD" type="CanvasLayer"]
 process_mode = 4
@@ -108,12 +106,11 @@ offset_bottom = 131.0
 
 [node name="Avatar" type="TextureRect" parent="BlaBlaContainer/ColorRect/ColorRect"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 1.0
-offset_right = 122.0
-offset_bottom = 127.0
-texture = SubResource("ImageTexture_rfqym")
-expand_mode = 5
+offset_left = -1.0
+offset_right = 125.0
+offset_bottom = 132.0
+expand_mode = 1
+stretch_mode = 4
 
 [node name="BlaBlaText" type="RichTextLabel" parent="BlaBlaContainer"]
 layout_mode = 0

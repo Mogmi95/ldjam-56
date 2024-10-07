@@ -191,5 +191,14 @@ func _on_story_trigger(flag):
             Signals.start_display_dialog.emit([
                 ["cathy", "Wanna eat this hotdog, little friends?"],
             ])
+        "second":
+            Signals.start_display_dialog.emit([
+                ["bird", "Nothing can stop us!"],
+                ["minion", "Rrrrrr..."]
+            ])
+        "boss_2":
+            Signals.start_display_dialog.emit([
+                ["cathy", "Leave me alone! MOMMYYYYYY"],
+            ])
         _:
             print("WARNING: UNKNOWN STORY FLAG ", flag)
