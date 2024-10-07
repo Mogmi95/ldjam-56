@@ -13,4 +13,4 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
     if "Minion" in body.name:
-        Signals.minion_hurt.emit(body)
+        Signals.minion_hurt.emit(body, self)
