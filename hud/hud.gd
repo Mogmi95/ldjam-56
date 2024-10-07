@@ -12,11 +12,15 @@ func _ready() -> void:
     Signals.start_display_dialog.connect(show_dialog)
     $BlaBlaContainer/ColorRect/ColorRect/Avatar.texture = avatar_bird
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _input(event) -> void:
     if dialog != null:
         if Input.is_action_pressed("player_dash"):
             show_next_dialog()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+    pass
 
 func update_minions(minions_nbr: int) -> void:
     $Minions.text = str(minions_nbr)
