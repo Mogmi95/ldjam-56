@@ -82,7 +82,7 @@ func _unload_level(level: Level) -> void:
 
 # Called when level_ended signal is triggered
 func _change_level() -> void:
-    if level_nbr >= 3:
+    if level_nbr >= 5:
         return
 
     level_nbr += 1
@@ -102,7 +102,8 @@ func _on_post_fight_timer_timeout() -> void:
 #end
 
 func dezoom(delta: float) -> void:
-    var foreground: Sprite2D = precedent_level_sc.get_node("Foreground")
+    var level = precedent_level_sc if precedent_level_sc else current_level_sc
+    var foreground: Sprite2D = level.get_node("Foreground")
     var zoom_target = 0.67
     var dezoom_value = delta * (1.0 - zoom_target) / $PostFightTimer.wait_time
     var dezoom_vec = delta * (Vector2(dezoom_offset, -360) - $CameraCollision.global_position) / $PostFightTimer.wait_time

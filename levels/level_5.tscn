@@ -1,13 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnxhag55i34qc"]
+[gd_scene load_steps=7 format=3 uid="uid://d7go1yxe3yy"]
 
-[ext_resource type="Script" path="res://levels/level.gd" id="1_38fns"]
-[ext_resource type="Texture2D" uid="uid://dibfascjppkqj" path="res://assets/toronto/nightsky.png" id="2_47a87"]
-[ext_resource type="Texture2D" uid="uid://oesce4871f0f" path="res://assets/toronto/sidewalk.png" id="3_6ieyi"]
-[ext_resource type="Texture2D" uid="uid://chi66y41viot4" path="res://assets/toronto/car.png" id="4_r5u23"]
-[ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="5_on8xs"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l16s"]
-size = Vector2(2574, 257)
+[ext_resource type="Script" path="res://levels/level.gd" id="1_71w2b"]
+[ext_resource type="Texture2D" uid="uid://b6s3f20qylb7l" path="res://assets/galaxy/galaxy.png" id="2_n20c0"]
+[ext_resource type="Texture2D" uid="uid://chi66y41viot4" path="res://assets/toronto/car.png" id="4_s1p6q"]
+[ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="5_qysfg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2om3n"]
 size = Vector2(529.5, 307.635)
@@ -17,7 +13,7 @@ radius = 246.08
 height = 628.377
 
 [node name="Level3" type="Node2D"]
-script = ExtResource("1_38fns")
+script = ExtResource("1_71w2b")
 should_camera_move = true
 clamp_y = Vector2i(238, 720)
 level_width = 2560
@@ -28,22 +24,12 @@ loading_checkpoint = 1280
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
 z_index = -1
-texture = ExtResource("2_47a87")
+scale = Vector2(1.18889, 1)
+texture = ExtResource("2_n20c0")
 centered = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(1280, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(0, 1.78814e-07)
-texture = ExtResource("3_6ieyi")
-centered = false
-
-[node name="Area2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1277, 118.5)
-shape = SubResource("RectangleShape2D_2l16s")
 
 [node name="Obstacle" type="StaticBody2D" parent="."]
 position = Vector2(975, 369)
@@ -53,7 +39,7 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
 position = Vector2(321, -321)
 scale = Vector2(2.25391, 2.25391)
-texture = ExtResource("4_r5u23")
+texture = ExtResource("4_s1p6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
 position = Vector2(552, -232)
@@ -76,7 +62,7 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Obstacle2"]
 position = Vector2(321, -321)
 scale = Vector2(2.25391, 2.25391)
-texture = ExtResource("4_r5u23")
+texture = ExtResource("4_s1p6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2"]
 position = Vector2(552, -232)
@@ -99,7 +85,7 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Obstacle3"]
 position = Vector2(321, -321)
 scale = Vector2(2.25391, 2.25391)
-texture = ExtResource("4_r5u23")
+texture = ExtResource("4_s1p6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle3"]
 position = Vector2(552, -232)
@@ -122,7 +108,7 @@ metadata/_edit_group_ = true
 [node name="Sprite2D" type="Sprite2D" parent="Obstacle4"]
 position = Vector2(321, -321)
 scale = Vector2(2.25391, 2.25391)
-texture = ExtResource("4_r5u23")
+texture = ExtResource("4_s1p6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle4"]
 position = Vector2(552, -232)
@@ -137,37 +123,37 @@ position = Vector2(234, -104)
 rotation = 1.01404
 shape = SubResource("CapsuleShape2D_v7cum")
 
-[node name="Food" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
+[node name="Food" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
 position = Vector2(543, 653)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
 
-[node name="Food2" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
+[node name="Food2" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
 position = Vector2(873, 275)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
 
-[node name="Food3" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
+[node name="Food3" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
 position = Vector2(2335, 257)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
 
-[node name="Food4" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
+[node name="Food4" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
 position = Vector2(2229, 254)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
 
-[node name="Food5" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
+[node name="Food5" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
 position = Vector2(2126, 259)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
 
-[node name="Food6" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
+[node name="Food6" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
 position = Vector2(1980, 662)
 aggro_radius = 40
 hit_points = 1
