@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3kch8yodx84h"]
+[gd_scene load_steps=11 format=3 uid="uid://c3kch8yodx84h"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_1vjo6"]
 [ext_resource type="PackedScene" uid="uid://mc77u87jftr" path="res://player/player.tscn" id="1_8m0ob"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://ca86ciqxq5cax" path="res://camera/camera_collision.tscn" id="4_ysbqa"]
 [ext_resource type="PackedScene" uid="uid://k5d3jg38igg2" path="res://hud/hud.tscn" id="5_j7bnl"]
 [ext_resource type="PackedScene" uid="uid://b3woyec3jy3ye" path="res://hud/main_menu.tscn" id="7_00srs"]
+[ext_resource type="AudioStream" uid="uid://btcen63scdeqo" path="res://assets/music/LDJAM - Main Theme - Tribal King.ogg" id="8_wlwns"]
+[ext_resource type="AudioStream" uid="uid://b2cytp7jfxdds" path="res://assets/music/LDJAM - Main Theme - Normal boss.ogg" id="9_yh4u3"]
+[ext_resource type="AudioStream" uid="uid://dg3xyfq42iwvw" path="res://assets/music/LDJAM - Main Theme - Fretlessbass.ogg" id="10_vkals"]
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -34,3 +37,24 @@ one_shot = true
 
 [node name="HUD" parent="." instance=ExtResource("5_j7bnl")]
 process_mode = 3
+
+[node name="Music" type="Node" parent="."]
+process_mode = 3
+
+[node name="Tribal King" type="AudioStreamPlayer" parent="Music"]
+process_mode = 3
+stream = ExtResource("8_wlwns")
+autoplay = true
+parameters/looping = true
+
+[node name="Boss Too Much" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("9_yh4u3")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true
+
+[node name="Bass" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("10_vkals")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true

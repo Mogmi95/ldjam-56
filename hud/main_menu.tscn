@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3woyec3jy3ye"]
+[gd_scene load_steps=12 format=3 uid="uid://b3woyec3jy3ye"]
 
 [ext_resource type="Script" path="res://hud/main_menu.gd" id="1_332d6"]
 [ext_resource type="PackedScene" uid="uid://bgieboxyd7c1v" path="res://hud/background.tscn" id="1_n8n11"]
@@ -6,6 +6,30 @@
 [ext_resource type="Texture2D" uid="uid://cbnjb048j60f1" path="res://assets/logo.png" id="3_berlr"]
 [ext_resource type="FontFile" uid="uid://bjlcxvwf8wb12" path="res://fonts/Jurassic_Park.ttf" id="5_i2lns"]
 [ext_resource type="PackedScene" uid="uid://bgo5xlu70ifr5" path="res://minion/Minion.tscn" id="6_ig8td"]
+[ext_resource type="Texture2D" uid="uid://bisfr0rb77nwq" path="res://assets/player/chick1.png" id="7_xixj0"]
+[ext_resource type="Texture2D" uid="uid://duqhmclifchcc" path="res://assets/player/chick2.png" id="8_35sqy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oflau"]
+atlas = ExtResource("7_xixj0")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4x7q"]
+atlas = ExtResource("8_35sqy")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5fvbx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oflau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4x7q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_332d6")
@@ -81,6 +105,13 @@ position = Vector2(349, 654)
 
 [node name="Minion6" parent="Minions" instance=ExtResource("6_ig8td")]
 position = Vector2(144, 550)
+
+[node name="FakePlayer" type="AnimatedSprite2D" parent="."]
+position = Vector2(1000, 577)
+scale = Vector2(0.3125, 0.28125)
+sprite_frames = SubResource("SpriteFrames_5fvbx")
+autoplay = "default"
+frame_progress = 0.157259
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

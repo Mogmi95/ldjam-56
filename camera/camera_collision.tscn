@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca86ciqxq5cax"]
+[gd_scene load_steps=5 format=3 uid="uid://ca86ciqxq5cax"]
 
 [ext_resource type="Script" path="res://camera/camera_collision.gd" id="1_d0p6r"]
 [ext_resource type="Script" path="res://camera/camera_movement.gd" id="1_s74bg"]
@@ -6,16 +6,25 @@
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_hqr3d"]
 b = Vector2(0, 720)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_l7vxm"]
+radius = 8.0
+
 [node name="CameraCollision" type="Node2D"]
 script = ExtResource("1_s74bg")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CameraArea2D" type="Area2D" parent="."]
 script = ExtResource("1_d0p6r")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CameraCollisionShape" type="CollisionShape2D" parent="CameraArea2D"]
 shape = SubResource("SegmentShape2D_hqr3d")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[node name="EventBody" type="CharacterBody2D" parent="."]
+position = Vector2(637, -42)
+
+[node name="EventCollision" type="CollisionShape2D" parent="EventBody"]
+shape = SubResource("CircleShape2D_l7vxm")
+
+[connection signal="body_entered" from="CameraArea2D" to="CameraArea2D" method="_on_body_entered"]
