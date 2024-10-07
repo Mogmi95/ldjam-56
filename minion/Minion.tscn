@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bgo5xlu70ifr5"]
+[gd_scene load_steps=23 format=3 uid="uid://bgo5xlu70ifr5"]
 
 [ext_resource type="Script" path="res://minion/minion.gd" id="1_xslsr"]
 [ext_resource type="Texture2D" uid="uid://bl2o7vhkqj2tl" path="res://assets/chomposaurus/atk.png" id="2_2s38t"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dnexhanmmg1rx" path="res://assets/chomposaurus/run2.png" id="8_wssru"]
 [ext_resource type="Texture2D" uid="uid://bjldju0hnm3el" path="res://assets/chomposaurus/run3.png" id="9_bdo55"]
 [ext_resource type="Texture2D" uid="uid://bxqv7wfrrl2k1" path="res://assets/chomposaurus/run4.png" id="10_eekdd"]
-[ext_resource type="AudioStream" uid="uid://drn8f4mavp7nh" path="res://assets/sounds/walk.ogg" id="14_exuq7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ptiko"]
 radius = 6.255
@@ -354,10 +353,6 @@ shape = SubResource("RectangleShape2D_n7a2a")
 
 [node name="Die" type="AudioStreamPlayer" parent="."]
 volume_db = -4.0
-
-[node name="Walk" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_exuq7")
-autoplay = true
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="PrepareAttackTimer" to="." method="_on_prepare_attack_timer_timeout"]
