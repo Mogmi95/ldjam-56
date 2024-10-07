@@ -50,6 +50,7 @@ func new_game() -> void:
     $MainMenu.hide()
     $Player.show()
     $HUD.show()
+    $Player.reset_dash()
     # Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
     current_level_sc = null
     $CameraCollision.position = Vector2.ZERO

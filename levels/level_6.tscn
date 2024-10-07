@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://levels/level.gd" id="1_hxihu"]
 [ext_resource type="Texture2D" uid="uid://b6s3f20qylb7l" path="res://assets/galaxy/galaxy.png" id="2_gvk71"]
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="4_kjm7w"]
-[ext_resource type="PackedScene" uid="uid://bp8cd780kf3f5" path="res://mob/animation_space_cathy.tscn" id="5_da16i"]
+[ext_resource type="PackedScene" path="res://mob/animation_space_cathy.tscn" id="5_da16i"]
 [ext_resource type="PackedScene" uid="uid://dv2mq7sqhekfp" path="res://mob/behavior_default.tscn" id="5_i6xjy"]
 [ext_resource type="PackedScene" path="res://Target.tscn" id="7_lqur6"]
 
