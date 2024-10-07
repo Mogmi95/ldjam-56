@@ -16,6 +16,10 @@ signal mob_died(mob: Mob)
 
 signal level_ended()
 
+signal start_display_dialog(dialog)
+
+signal stop_display_dialog(dialog)
+
 signal game_over()
 
 signal start_game()
