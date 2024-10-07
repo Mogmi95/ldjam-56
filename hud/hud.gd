@@ -1,17 +1,21 @@
 extends CanvasLayer
 
 
-var avatar_bird = load()
-var avatar_minion = load()
+var dialog = null
+var avatar_bird = load("res://assets/player/chick1.png")
+var avatar_minion = load("res://assets/chomposaurus/chomp_idle1.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     Signals.minions_number_changed.connect(update_minions)
+    Signals.start_display_dialog.connect(show_dialog)
+    $BlaBlaContainer/ColorRect/ColorRect/Avatar.texture = avatar_bird
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    pass
-
+    if dialog != null:
+        if Input.is_action_pressed("player_dash"):
+            show_next_dialog()
 
 func update_minions(minions_nbr: int) -> void:
     $Minions.text = str(minions_nbr)
@@ -28,8 +32,31 @@ func show_game_over() -> void:
 func update_dash(value: int) -> void:
     $TextureProgressBar.value = value
 
-func show_dialog(dialog):
-    pass
+# Display a dialog then close the HUD
+# format of dialog is as follow:
+# [["bird","Hello world!"],["minion", "Roar?"]]
+func show_dialog(new_dialog):
+    if new_dialog == null:
+        return
+    get_tree().paused = true
+    dialog = new_dialog
+    $BlaBlaContainer.show()
+    show_next_dialog()
+
+func show_next_dialog():
+    if dialog.size() == 0:
+        dialog = null
+        $BlaBlaContainer.hide()
+        Signals.stop_display_dialog.emit()
+        get_tree().paused = false
+        return
+    var next_message = dialog.pop_front()
+    match (next_message[0]):
+        "bird":
+            $BlaBlaContainer/ColorRect/ColorRect/Avatar.texture = avatar_bird
+        "minion":
+            $BlaBlaContainer/ColorRect/ColorRect/Avatar.texture = avatar_minion
+    $BlaBlaContainer/BlaBlaText.text = next_message[1]
 
 func _on_quit_button_pressed() -> void:
     get_tree().quit()
