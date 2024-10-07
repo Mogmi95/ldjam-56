@@ -19,6 +19,8 @@ func _ready() -> void:
     Signals.music_trigger.connect(_on_music_trigger)
     Signals.story_trigger.connect(_on_story_trigger)
 
+    $JurassikJustice.play()
+
     $PostFightTimer.timeout.connect(_on_post_fight_timer_timeout)
     $Player.hide()
     $HUD.hide()
@@ -175,13 +177,8 @@ func dezoom(delta: float) -> void:
 # Triggers
 
 func _on_music_trigger(flag):
-    match (flag):
-        "first_boss":
-            $"Music/Boss Too Much".volume_db = 0
-        "bass":
-            $"Music/Bass".volume_db = 0
-        _:
-            print("WARNING: UNKNOWN EVENT ", flag)
+    # RIP FEATURE
+    pass
 
 func _on_story_trigger(flag):
     match (flag):
