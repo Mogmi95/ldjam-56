@@ -141,34 +141,40 @@ shape = SubResource("CapsuleShape2D_v7cum")
 position = Vector2(543, 653)
 aggro_radius = 40
 hit_points = 1
+food_drop = 5
 vitals = [NodePath(".")]
 
 [node name="Food2" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
 position = Vector2(873, 275)
 aggro_radius = 40
 hit_points = 1
+food_drop = 3
 vitals = [NodePath(".")]
 
 [node name="Food3" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
 position = Vector2(2335, 257)
 aggro_radius = 40
 hit_points = 1
+food_drop = 5
 vitals = [NodePath(".")]
 
 [node name="Food4" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
 position = Vector2(2229, 254)
 aggro_radius = 40
 hit_points = 1
+food_drop = 6
 vitals = [NodePath(".")]
 
 [node name="Food5" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
 position = Vector2(2126, 259)
 aggro_radius = 40
 hit_points = 1
+food_drop = 4
 vitals = [NodePath(".")]
 
 [node name="Food6" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_on8xs")]
 position = Vector2(1980, 662)
 aggro_radius = 40
 hit_points = 1
+food_drop = 3
 vitals = [NodePath(".")]

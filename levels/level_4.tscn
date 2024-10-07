@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="4_2g0tb"]
 [ext_resource type="PackedScene" uid="uid://dv2mq7sqhekfp" path="res://mob/behavior_default.tscn" id="5_lxxdf"]
 [ext_resource type="PackedScene" uid="uid://3v4e7lsewuk0" path="res://mob/animation_default.tscn" id="6_srin0"]
-[ext_resource type="PackedScene" path="res://Target.tscn" id="7_hwhes"]
+[ext_resource type="PackedScene" uid="uid://bxpogcnmtsowy" path="res://Target.tscn" id="7_hwhes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06k1g"]
 size = Vector2(427, 245)
@@ -48,7 +48,7 @@ apm = 10.0
 hit_points = 50
 aoe_range = 100
 aoe_size = Vector2(10, 3)
-food_drop = 1
+food_drop = 50
 vitals = [NodePath("Target")]
 
 [node name="Target" parent="Mob" instance=ExtResource("7_hwhes")]

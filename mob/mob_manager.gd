@@ -23,7 +23,7 @@ func spawn_food(mob_position: Vector2, quantity_of_food_to_drop):
     var new_food = MobFactory.create_food()
     add_child(new_food)
     new_food.global_position = mob_position
-    new_food.name = str(quantity_of_food_to_drop)
+    print(quantity_of_food_to_drop)
     new_food.food_drop = quantity_of_food_to_drop
 
 func _on_food_consumed(food: Node):
@@ -32,6 +32,6 @@ func _on_food_consumed(food: Node):
 
 func _on_mob_died(mob: Node):
     mob.hide()
-    if mob.food_drop > 0:
-        spawn_food(mob.position, mob.food_drop)
+    if mob.is_boss():
+        spawn_food(mob.global_position, mob.food_drop)
     mob.queue_free()

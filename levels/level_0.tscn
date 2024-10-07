@@ -36,6 +36,7 @@ centered = false
 position = Vector2(1050, 488)
 aggro_radius = 40
 hit_points = 1
+food_drop = 2
 vitals = [NodePath(".")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
