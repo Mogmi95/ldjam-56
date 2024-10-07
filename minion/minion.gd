@@ -129,9 +129,11 @@ func _on_prepare_attack_timer_timeout() -> void:
         _clear_animation()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+    _clear_animation()
+
+func _emit_hurt_boss_signal():
     if target != null:
         Signals.mob_hurt.emit(target)
-    _clear_animation()
 
 func _clear_animation():
     state = State.IDLE

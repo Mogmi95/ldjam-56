@@ -47,6 +47,7 @@ func _ready() -> void:
 #-----------------------------------------------------------------------------------------------------------------------
 func _on_signals_mob_hurt(mob: Mob) -> void:
     if mob == self:
+        $MobAnimationPlayer.play("hurt")
         set_current_hp(_current_hp - (randi() % 2 + 1))
 #end
 
@@ -82,6 +83,11 @@ func _on_behavior_attacking() -> void:
 
 #end
 
+#-----------------------------------------------------------------------------------------------------------------------
+func _change_mob_color(color: Color) -> void:
+    _animation.modulate = color
+
+#end
 #-----------------------------------------------------------------------------------------------------------------------
 func _randomize_AoE_position() -> void:
     var isHorizontal = randi() % 2
