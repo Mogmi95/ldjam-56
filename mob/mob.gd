@@ -97,7 +97,7 @@ func _on_behavior_attacking(aoe: Area2D, atk_time: float) -> void:
     aoe.get_node("AoE_Damage").show();
 
     for hit_minion in aoe.get_overlapping_bodies():
-        Signals.minion_hurt.emit(hit_minion)
+        Signals.minion_hurt.emit(hit_minion, self)
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
