@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3woyec3jy3ye"]
+[gd_scene load_steps=7 format=3 uid="uid://b3woyec3jy3ye"]
 
 [ext_resource type="Script" path="res://hud/main_menu.gd" id="1_332d6"]
 [ext_resource type="PackedScene" uid="uid://bgieboxyd7c1v" path="res://hud/background.tscn" id="1_n8n11"]
 [ext_resource type="PackedScene" uid="uid://dqau1tim50yu6" path="res://hud/foreground.tscn" id="2_0emgg"]
 [ext_resource type="Texture2D" uid="uid://cbnjb048j60f1" path="res://assets/logo.png" id="3_berlr"]
 [ext_resource type="FontFile" uid="uid://bjlcxvwf8wb12" path="res://fonts/Jurassic_Park.ttf" id="5_i2lns"]
+[ext_resource type="PackedScene" uid="uid://bgo5xlu70ifr5" path="res://minion/Minion.tscn" id="6_ig8td"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_332d6")
@@ -51,6 +52,35 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_i2lns")
 theme_override_font_sizes/font_size = 100
 text = "Exit"
+
+[node name="Minions" type="Node2D" parent="."]
+
+[node name="Minion" parent="Minions" instance=ExtResource("6_ig8td")]
+position = Vector2(265, 506)
+
+[node name="Minion2" parent="Minions" instance=ExtResource("6_ig8td")]
+position = Vector2(165, 507)
+
+[node name="Minion3" parent="Minions" instance=ExtResource("6_ig8td")]
+position = Vector2(235, 561)
+
+[node name="Minion4" parent="Minions" instance=ExtResource("6_ig8td")]
+position = Vector2(305, 574)
+
+[node name="Minion5" parent="Minions" instance=ExtResource("6_ig8td")]
+position = Vector2(260, 627)
+
+[node name="Minion7" parent="Minions" instance=ExtResource("6_ig8td")]
+position = Vector2(173, 655)
+
+[node name="Minion8" parent="Minions" instance=ExtResource("6_ig8td")]
+position = Vector2(108, 611)
+
+[node name="Minion9" parent="Minions" instance=ExtResource("6_ig8td")]
+position = Vector2(349, 654)
+
+[node name="Minion6" parent="Minions" instance=ExtResource("6_ig8td")]
+position = Vector2(144, 550)
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

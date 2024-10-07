@@ -21,6 +21,8 @@ var leader: Node2D
 var last_position: Vector2
 var last_traveled_distances = Array()
 
+var forced_walk = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     sprite = $PathToTarget/PathFollow2D/MinionSprite
@@ -34,22 +36,25 @@ func _process(delta: float) -> void:
     last_position = global_position
     var has_minion_significantly_moved = is_minion_significantly_moving(distance_moved_since_last_position)
 
-    match (state):
-        State.IDLE, State.WALK:
-            if has_minion_significantly_moved:
-                sprite.animation = "walk"
-                sprite.flip_h = velocity.x < 0
-            else:
-                sprite.animation = "idle"
-        State.PREPARE_ATTACK:
-            sprite.animation = "prepare_attack"
-        State.ATTACK:
-            pass
-        State.DAMAGED:
-            pass
+    if forced_walk:
+        sprite.animation = "walk"
+    else:
+        match (state):
+            State.IDLE, State.WALK:
+                if has_minion_significantly_moved:
+                    sprite.animation = "walk"
+                    sprite.flip_h = velocity.x < 0
+                else:
+                    sprite.animation = "idle"
+            State.PREPARE_ATTACK:
+                sprite.animation = "prepare_attack"
+            State.ATTACK:
+                pass
+            State.DAMAGED:
+                pass
 
 func _physics_process(delta):
-    if state == State.IDLE or state == State.WALK:
+    if leader != null and (state == State.IDLE or state == State.WALK):
         var distance_to_leader = global_position.distance_to(leader.global_position)
         if distance_to_leader > 5:
             velocity = global_position.direction_to(leader.global_position)
@@ -82,6 +87,10 @@ func start_random_attack_timer():
 
 func die():
     hide()
+
+func force_walk():
+    forced_walk = true
+    sprite.animation = "walk"
 
 func _on_attack_timer_timeout() -> void:
     if target != null:
