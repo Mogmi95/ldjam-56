@@ -131,13 +131,15 @@ func _on_mob_died(mob: Mob) -> void:
         _change_level()
 
         for minion in $MinionManager.get_children():
-            minion.force_walk()
+            if minion is not AudioStreamPlayer:
+                minion.force_walk()
 #end
 
 func _on_post_fight_timer_timeout() -> void:
     zoom_value *= 2.0 / 3.0
     for minion in $MinionManager.get_children():
-        minion.force_walk(false)
+        if minion is not AudioStreamPlayer:
+            minion.force_walk(false)
     $CameraCollision.set_destination_and_back_collision(current_level_sc.should_camera_move,
                                                         x_offset + current_level_sc.camera_where_to)
 #end
@@ -165,13 +167,15 @@ func dezoom(delta: float) -> void:
     var minion_positions: Array
 
     for minion in $MinionManager.get_children():
-        minion_positions.append(minion.global_position)
+        if minion is not AudioStreamPlayer:
+            minion_positions.append(minion.global_position)
 
     $MinionManager.scale.x -= dezoom_value
     $MinionManager.scale.y -= dezoom_value
 
     for minion in $MinionManager.get_children():
-        minion.global_position = minion_positions.pop_front()
+        if minion is not AudioStreamPlayer:
+            minion.global_position = minion_positions.pop_front()
 #end
 
 # Triggers
