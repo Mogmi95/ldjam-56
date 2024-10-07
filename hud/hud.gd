@@ -69,4 +69,4 @@ func _on_retry_button_pressed() -> void:
     $RetryButton.hide()
     $QuitButton.hide()
     $Message.hide()
-    Signals.start_game.emit()
+    Signals.restart_game.emit()

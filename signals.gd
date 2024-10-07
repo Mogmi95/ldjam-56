@@ -24,6 +24,8 @@ signal game_over()
 
 signal start_game()
 
+signal restart_game()
+
 signal music_trigger(flag)
 
 signal story_trigger(flag)
@@ -40,6 +42,7 @@ func _ready() -> void:
     level_ended.is_null()
     game_over.is_null()
     start_game.is_null()
+    restart_game.is_null()
     music_trigger.is_null()
     story_trigger.is_null()
     start_display_dialog.is_null()

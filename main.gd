@@ -13,6 +13,7 @@ func _ready() -> void:
     # Signals.level_ended.connect(_change_level)
     Signals.game_over.connect(game_over)
     Signals.start_game.connect(new_game)
+    Signals.restart_game.connect(retry_game)
     Signals.mob_died.connect(_on_mob_died)
 
     Signals.music_trigger.connect(_on_music_trigger)
@@ -53,8 +54,31 @@ func new_game() -> void:
     # Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
     current_level_sc = null
     $CameraCollision.position = Vector2.ZERO
+    $Player.position = Vector2(1280 / 2.0, 780 / 2.0)
     level_nbr = 0
     load_level(level_nbr)
+#end
+
+func retry_game() -> void:
+    print("--RETRY--")
+    for level in get_children():
+        if level.name.find("Level") != -1:
+            _unload_level(level)
+
+    for minion in $MinionManager.get_children():
+        call_deferred("remove_child", minion)
+
+    for mob in $MobManager.get_children():
+        call_deferred("remove_child", mob)
+
+    level_nbr = 0
+    precedent_level_sc = null
+    current_level_sc = null
+    x_offset = 0
+    zoom_value = 1.0
+    dezoom_offset = 0
+
+    new_game()
 #end
 
 func game_over() -> void:
