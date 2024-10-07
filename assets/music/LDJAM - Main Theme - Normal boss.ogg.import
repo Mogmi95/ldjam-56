@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b2cytp7jfxdds"
+path="res://.godot/imported/LDJAM - Main Theme - Normal boss.ogg-04ed72d6b3417d756d8ddf4b7429ca88.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/LDJAM - Main Theme - Normal boss.ogg"
+dest_files=["res://.godot/imported/LDJAM - Main Theme - Normal boss.ogg-04ed72d6b3417d756d8ddf4b7429ca88.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

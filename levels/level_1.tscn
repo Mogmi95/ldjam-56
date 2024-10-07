@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://4cioi3e5nivi"]
+[gd_scene load_steps=10 format=3 uid="uid://4cioi3e5nivi"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_qoqef"]
 [ext_resource type="Texture2D" uid="uid://cqgtv7lc3otyc" path="res://assets/playa/sea.png" id="2_0tl0n"]
 [ext_resource type="Texture2D" uid="uid://1ujo1l5xf84b" path="res://assets/playa/playa.png" id="3_umjut"]
 [ext_resource type="Texture2D" uid="uid://bny0d54wh2qg7" path="res://assets/playa/trunk.png" id="4_n8pmp"]
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="5_80a07"]
+[ext_resource type="PackedScene" uid="uid://b6w1o0vjv02n" path="res://triggers/MusicTrigger.tscn" id="6_3n116"]
+[ext_resource type="PackedScene" uid="uid://qcrxydug0eu2" path="res://triggers/StoryTrigger.tscn" id="7_siurc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x50ca"]
 size = Vector2(2578, 314)
@@ -112,3 +114,11 @@ position = Vector2(1012, 407)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
+
+[node name="MusicTriggerBass" parent="." instance=ExtResource("6_3n116")]
+position = Vector2(1233, 431)
+music_flag = "bass"
+
+[node name="StoryTriggerBoss1" parent="." instance=ExtResource("7_siurc")]
+position = Vector2(2252, 410)
+story_flag = "boss_1"

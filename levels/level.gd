@@ -12,10 +12,7 @@ class_name Level
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    Signals.start_display_dialog.emit([
-        ["bird", "Hello hello"],
-        ["minion", "Rrrrrrrr!"]
-    ])
+    pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
