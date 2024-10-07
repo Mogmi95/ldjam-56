@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d7go1yxe3yy"]
+[gd_scene load_steps=13 format=3 uid="uid://d7go1yxe3yy"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_71w2b"]
 [ext_resource type="Texture2D" uid="uid://b6s3f20qylb7l" path="res://assets/galaxy/galaxy.png" id="2_n20c0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://chi66y41viot4" path="res://assets/toronto/car.png" id="4_s1p6q"]
 [ext_resource type="Texture2D" uid="uid://bny0d54wh2qg7" path="res://assets/playa/trunk.png" id="5_jnysn"]
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="5_qysfg"]
+[ext_resource type="PackedScene" uid="uid://qcrxydug0eu2" path="res://triggers/StoryTrigger.tscn" id="7_wdch1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cpq7i"]
 radius = 224.971
@@ -223,3 +224,7 @@ aggro_radius = 40
 hit_points = 1
 food_drop = 10
 vitals = [NodePath(".")]
+
+[node name="StoryTrigger" parent="." instance=ExtResource("7_wdch1")]
+position = Vector2(2088, 475)
+story_flag = "final_boss"

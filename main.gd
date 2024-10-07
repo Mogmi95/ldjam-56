@@ -200,5 +200,10 @@ func _on_story_trigger(flag):
             Signals.start_display_dialog.emit([
                 ["cathy", "Leave me alone! MOMMYYYYYY"],
             ])
+        "final_boss":
+            Signals.start_display_dialog.emit([
+                ["cathy", "NOW YOU'VE DONE IT"],
+                ["minion", "Rrrrrr!!!!!!!"]
+            ])
         _:
             print("WARNING: UNKNOWN STORY FLAG ", flag)

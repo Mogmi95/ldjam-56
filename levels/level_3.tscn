@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnxhag55i34qc"]
+[gd_scene load_steps=10 format=3 uid="uid://cnxhag55i34qc"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_38fns"]
 [ext_resource type="Texture2D" uid="uid://dibfascjppkqj" path="res://assets/toronto/nightsky.png" id="2_47a87"]
 [ext_resource type="Texture2D" uid="uid://oesce4871f0f" path="res://assets/toronto/sidewalk.png" id="3_6ieyi"]
 [ext_resource type="Texture2D" uid="uid://chi66y41viot4" path="res://assets/toronto/car.png" id="4_r5u23"]
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="5_on8xs"]
+[ext_resource type="PackedScene" uid="uid://qcrxydug0eu2" path="res://triggers/StoryTrigger.tscn" id="6_ot3dl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2l16s"]
 size = Vector2(2574, 257)
@@ -178,3 +179,11 @@ aggro_radius = 40
 hit_points = 1
 food_drop = 3
 vitals = [NodePath(".")]
+
+[node name="StoryTrigger" parent="." instance=ExtResource("6_ot3dl")]
+position = Vector2(704, 449)
+story_flag = "second"
+
+[node name="StoryTrigger2" parent="." instance=ExtResource("6_ot3dl")]
+position = Vector2(2380, 437)
+story_flag = "boss_2"
