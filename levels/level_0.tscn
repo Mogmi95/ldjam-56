@@ -14,6 +14,7 @@ script = ExtResource("1_qqq2a")
 minimum_number_of_minions = 2
 clamp_y = Vector2i(360, 720)
 level_width = 1280
+camera_where_to = 1280
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
