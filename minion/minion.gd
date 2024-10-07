@@ -97,6 +97,7 @@ func _on_prepare_attack_timer_timeout() -> void:
     if target != null:
         var vital_position = target.vitals[randi_range(0, target.vitals.size() - 1)].global_position
         state = State.ATTACK
+        sprite.animation = "attack"
 
         # Jump to target animation
         $PathToTarget.curve.clear_points()
@@ -116,18 +117,23 @@ func _on_prepare_attack_timer_timeout() -> void:
 
         $AnimationPlayer.play("atak")
     else:
-        state = State.IDLE
+        _clear_animation()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
     if target != null:
         Signals.mob_hurt.emit(target)
+    _clear_animation()
+
+func _clear_animation():
     state = State.IDLE
+    sprite.animation = "idle"
+    sprite.play()
+
     $AttackTimer.start(2.0)
     $PathToTarget/PathFollow2D.rotation = 0
     $PathForShadow/PathFollowShadow.rotation = 0
     $PathToTarget.curve.clear_points()
     start_random_attack_timer()
-
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
     if area.name == "AggroRadius":
