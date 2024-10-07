@@ -18,3 +18,4 @@ func _on_exit_button_pressed() -> void:
 
 func _on_start_button_pressed() -> void:
     Signals.start_game.emit()
+    Signals.start_first_music_layer.emit()
