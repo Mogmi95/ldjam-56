@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp8cd780kf3f5"]
+
+[ext_resource type="Texture2D" uid="uid://cubkftfqq1qc6" path="res://assets/galaxy/space_cathy1.png" id="1_l7hv8"]
+[ext_resource type="Texture2D" uid="uid://bgxkng87q0qyn" path="res://assets/galaxy/space_cathy2.png" id="2_hh0q2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mf4kj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l7hv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hh0q2")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l7hv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hh0q2")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_l7hv8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hh0q2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_mf4kj")
+animation = &"crouch"

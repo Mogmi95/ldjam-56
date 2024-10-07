@@ -1,9 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://d7go1yxe3yy"]
+[gd_scene load_steps=12 format=3 uid="uid://d7go1yxe3yy"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_71w2b"]
 [ext_resource type="Texture2D" uid="uid://b6s3f20qylb7l" path="res://assets/galaxy/galaxy.png" id="2_n20c0"]
+[ext_resource type="Texture2D" uid="uid://b3p6mwnk7lafi" path="res://assets/galaxy/black_hole.png" id="3_83vqt"]
 [ext_resource type="Texture2D" uid="uid://chi66y41viot4" path="res://assets/toronto/car.png" id="4_s1p6q"]
+[ext_resource type="Texture2D" uid="uid://bny0d54wh2qg7" path="res://assets/playa/trunk.png" id="5_jnysn"]
 [ext_resource type="PackedScene" uid="uid://bgmxka3ris8ev" path="res://mob/mob.tscn" id="5_qysfg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cpq7i"]
+radius = 224.971
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m2woa"]
+radius = 50.7616
+height = 682.029
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2om3n"]
 size = Vector2(529.5, 307.635)
@@ -12,7 +21,11 @@ size = Vector2(529.5, 307.635)
 radius = 246.08
 height = 628.377
 
-[node name="Level3" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gxfkm"]
+radius = 72.0
+height = 551.157
+
+[node name="Level5" type="Node2D"]
 script = ExtResource("1_71w2b")
 should_camera_move = true
 clamp_y = Vector2i(238, 720)
@@ -32,30 +45,47 @@ centered = false
 motion_mirroring = Vector2(1280, 0)
 
 [node name="Obstacle" type="StaticBody2D" parent="."]
-position = Vector2(975, 369)
+position = Vector2(1123, 161)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Obstacle"]
-position = Vector2(321, -321)
-scale = Vector2(2.25391, 2.25391)
-texture = ExtResource("4_s1p6q")
+position = Vector2(-1.99997, 1.99997)
+scale = Vector2(2.0918, 2.0918)
+texture = ExtResource("3_83vqt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle"]
-position = Vector2(552, -232)
-shape = SubResource("RectangleShape2D_2om3n")
+position = Vector2(-12, -6)
+shape = SubResource("CircleShape2D_cpq7i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Obstacle"]
-position = Vector2(99.25, 4.18225)
-shape = SubResource("RectangleShape2D_2om3n")
+position = Vector2(-12, 4)
+rotation = 0.708604
+shape = SubResource("CapsuleShape2D_m2woa")
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Obstacle"]
-position = Vector2(234, -104)
-rotation = 1.01404
-shape = SubResource("CapsuleShape2D_v7cum")
+[node name="Obstacle7" type="StaticBody2D" parent="."]
+position = Vector2(183, 553)
+rotation = 1.41895
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle7"]
+position = Vector2(-1.99997, 1.99997)
+scale = Vector2(2.0918, 2.0918)
+texture = ExtResource("3_83vqt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle7"]
+position = Vector2(-12, -6)
+shape = SubResource("CircleShape2D_cpq7i")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Obstacle7"]
+position = Vector2(-12, 4)
+rotation = 0.708604
+shape = SubResource("CapsuleShape2D_m2woa")
 
 [node name="Obstacle2" type="StaticBody2D" parent="."]
-position = Vector2(1988, 472)
+position = Vector2(1383, 447)
+rotation = 2.83791
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
@@ -78,7 +108,7 @@ rotation = 1.01404
 shape = SubResource("CapsuleShape2D_v7cum")
 
 [node name="Obstacle3" type="StaticBody2D" parent="."]
-position = Vector2(1293, 641)
+position = Vector2(559, 851)
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
@@ -101,7 +131,8 @@ rotation = 1.01404
 shape = SubResource("CapsuleShape2D_v7cum")
 
 [node name="Obstacle4" type="StaticBody2D" parent="."]
-position = Vector2(262, 659)
+position = Vector2(774, 223)
+rotation = -3.34405
 scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
@@ -123,8 +154,36 @@ position = Vector2(234, -104)
 rotation = 1.01404
 shape = SubResource("CapsuleShape2D_v7cum")
 
+[node name="Obstacle5" type="StaticBody2D" parent="."]
+position = Vector2(144, 118)
+rotation = -1.9251
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle5"]
+texture = ExtResource("5_jnysn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle5"]
+position = Vector2(0, -12)
+rotation = 0.942478
+shape = SubResource("CapsuleShape2D_gxfkm")
+
+[node name="Obstacle6" type="StaticBody2D" parent="."]
+position = Vector2(1000, 380)
+rotation = -3.14159
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Obstacle6"]
+texture = ExtResource("5_jnysn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle6"]
+position = Vector2(0, -12)
+rotation = 0.942478
+shape = SubResource("CapsuleShape2D_gxfkm")
+
 [node name="Food" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
-position = Vector2(543, 653)
+position = Vector2(445, 668)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
@@ -136,25 +195,25 @@ hit_points = 1
 vitals = [NodePath(".")]
 
 [node name="Food3" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
-position = Vector2(2335, 257)
+position = Vector2(264, 348)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
 
 [node name="Food4" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
-position = Vector2(2229, 254)
+position = Vector2(492, 92)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
 
 [node name="Food5" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
-position = Vector2(2126, 259)
+position = Vector2(1249, 330)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
 
 [node name="Food6" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("5_qysfg")]
-position = Vector2(1980, 662)
+position = Vector2(954, 561)
 aggro_radius = 40
 hit_points = 1
 vitals = [NodePath(".")]
