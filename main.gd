@@ -88,7 +88,6 @@ func _change_level() -> void:
 
 func _on_mob_died(mob: Mob) -> void:
     if mob.is_boss():
-        current_level_sc.get_node("NiqueLaParallax").show()
         dezoom_offset = x_offset
         $PostFightTimer.start()
         _change_level()
