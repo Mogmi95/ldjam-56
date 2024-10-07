@@ -33,7 +33,7 @@ texture = ExtResource("3_ixhkl")
 centered = false
 
 [node name="Mob" parent="." node_paths=PackedStringArray("vitals") instance=ExtResource("4_3okux")]
-position = Vector2(917, 483)
+position = Vector2(1151, 485)
 aggro_radius = 10
 hit_points = 1
 food_drop = 2

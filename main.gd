@@ -54,16 +54,15 @@ func new_game() -> void:
     $Player.show()
     $HUD.show()
     $Player.reset_dash()
-    # Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+    Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
     current_level_sc = null
     $CameraCollision.position = Vector2.ZERO
-    $Player.position = Vector2(1280 / 2.0, 780 / 2.0)
+    $Player.position = Vector2(1280 / 4.0, 780 / 2.0)
     level_nbr = 0
     load_level(level_nbr)
 #end
 
 func retry_game() -> void:
-    print("--RETRY--")
     for level in get_children():
         if level.name.find("Level") != -1:
             _unload_level(level)
@@ -80,6 +79,9 @@ func retry_game() -> void:
     x_offset = 0
     zoom_value = 1.0
     dezoom_offset = 0
+
+    $MinionManager.scale = Vector2.ONE
+    $Player.scale = Vector2.ONE
 
     new_game()
 #end
