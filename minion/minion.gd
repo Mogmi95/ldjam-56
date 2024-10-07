@@ -11,6 +11,7 @@ enum State {
     PREPARE_ATTACK,
     ATTACK,
     DAMAGED,
+    DEAD,
 }
 
 var state: State = State.IDLE
@@ -25,6 +26,8 @@ var forced_walk = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    Signals.minion_hurt.connect(_on_minion_hurt)
+
     sprite = $PathToTarget/PathFollow2D/MinionSprite
     #sprite.modulate = Color(randf(), randf(), randf())
     last_position = global_position
@@ -32,6 +35,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 @warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
+    if state == State.DEAD:
+        return
     var distance_moved_since_last_position = global_position.distance_to(last_position)
     last_position = global_position
     var has_minion_significantly_moved = is_minion_significantly_moving(distance_moved_since_last_position)
@@ -54,6 +59,9 @@ func _process(delta: float) -> void:
                 pass
 
 func _physics_process(delta):
+    if state == State.DEAD:
+        velocity = Vector2.ZERO
+        return
     if leader != null and (state == State.IDLE or state == State.WALK):
         var distance_to_leader = global_position.distance_to(leader.global_position)
         if distance_to_leader > 5:
@@ -85,14 +93,21 @@ func set_target(new_target: Node2D):
 func start_random_attack_timer():
     $AttackTimer.start(randf_range(0.5, 1.5))
 
-func die():
-    hide()
+func _on_minion_hurt(minion: Node, source: Node):
+    if minion == self:
+        state = State.DEAD
+        $AnimationPlayer.play("ded")
+
+func _notify_death():
+    Signals.minion_dead.emit(self)
 
 func force_walk():
     forced_walk = true
     sprite.animation = "walk"
 
 func _on_attack_timer_timeout() -> void:
+    if state == State.DEAD:
+        return
     if target != null:
         state = State.PREPARE_ATTACK
         sprite.animation = "prepare_attack"
@@ -103,6 +118,8 @@ func _on_attack_timer_timeout() -> void:
         $PrepareAttackTimer.start(DURATION_PREPARE_ATTACK)
 
 func _on_prepare_attack_timer_timeout() -> void:
+    if state == State.DEAD:
+        return
     if target != null:
         var vital_position = target.vitals[randi_range(0, target.vitals.size() - 1)].global_position
         state = State.ATTACK
@@ -129,6 +146,8 @@ func _on_prepare_attack_timer_timeout() -> void:
         _clear_animation()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+    if state == State.DEAD:
+        return
     _clear_animation()
 
 func _emit_hurt_boss_signal():

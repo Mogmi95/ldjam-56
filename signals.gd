@@ -6,6 +6,8 @@ signal food_consumed(food: Node)
 
 signal minion_hurt(minion: Node, source: Node)
 
+signal minion_dead(minion: Node)
+
 signal minions_number_changed(nbr: int)
 
 signal mob_hurt(mob: Mob)

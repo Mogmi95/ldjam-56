@@ -79,7 +79,7 @@ func _on_behavior_attacking() -> void:
     $AoE/AoE_Sprite.texture.gradient.set_color(0, Color(1, 0, 0))
     $AoE/AoE_Damage.show();
     for hit_minion in $AoE.get_overlapping_bodies():
-        Signals.minion_hurt.emit(hit_minion)
+        Signals.minion_hurt.emit(hit_minion, self)
 
 #end
 

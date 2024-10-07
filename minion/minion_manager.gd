@@ -10,7 +10,7 @@ var minions = Array()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    Signals.minion_hurt.connect(_on_minion_hurt)
+    Signals.minion_dead.connect(_on_minion_dead)
     Signals.food_consumed.connect(_on_food_consumed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,9 +45,8 @@ func _spawn(pos: Vector2):
     _emit_number_change()
     return minion
 
-func _on_minion_hurt(minion: Node):
+func _on_minion_dead(minion: Node):
     minions.erase(minion)
-    minion.die()
     minion.queue_free()
     _emit_number_change()
     if minions.size() == 0:
