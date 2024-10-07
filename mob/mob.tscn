@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgmxka3ris8ev"]
+[gd_scene load_steps=10 format=3 uid="uid://bgmxka3ris8ev"]
 
 [ext_resource type="Script" path="res://mob/mob.gd" id="1_4woou"]
 [ext_resource type="PackedScene" uid="uid://bc3aj8tuw7ss" path="res://mob/behavior_food.tscn" id="2_qyrd0"]
 [ext_resource type="PackedScene" uid="uid://dml8w82bj0e57" path="res://mob/animation_food.tscn" id="3_llri5"]
-[ext_resource type="PackedScene" uid="uid://buu55jc3prky7" path="res://mob/aoe.tscn" id="4_am3aw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvg08"]
 resource_local_to_scene = true
@@ -59,8 +58,6 @@ position = Vector2(656, 397)
 script = ExtResource("1_4woou")
 BehaviorScene = ExtResource("2_qyrd0")
 AnimationScene = ExtResource("3_llri5")
-
-[node name="AoE" parent="." instance=ExtResource("4_am3aw")]
 
 [node name="Healthbar" type="Control" parent="."]
 visible = false

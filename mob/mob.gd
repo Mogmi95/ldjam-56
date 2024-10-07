@@ -18,6 +18,7 @@ var _behavior: BehaviorInterface
 var _animation: AnimatedSprite2D
 var _current_hp: int:
     set = set_current_hp
+var _aoes: Dictionary
 
 #-----------------------------------------------------------------------------------------------------------------------
 func _ready() -> void:
@@ -27,13 +28,14 @@ func _ready() -> void:
 
     _behavior = BehaviorScene.instantiate()
     _behavior.set_apm(apm)
+    _behavior.set_aoe_range(aoe_range)
+    _behavior.set_aoe_size(aoe_size)
     _behavior.idling.connect(_on_behavior_idling)
     _behavior.preparing_attack.connect(_on_behavior_preparing_attack)
     _behavior.attacking.connect(_on_behavior_attacking)
     add_child(_behavior)
 
     _current_hp = hit_points
-    $AoE.scale = aoe_size
 
     $AggroRadius.scale.x = aggro_radius
     $AggroRadius.scale.y = aggro_radius / 2.0
@@ -52,55 +54,67 @@ func _on_signals_mob_hurt(mob: Mob) -> void:
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
+func _process(_delta: float) -> void:
+    _update_AoE_state()
+#end
+
+#-----------------------------------------------------------------------------------------------------------------------
 func _on_behavior_idling() -> void:
     _animation.play("idle")
 
-    $AoE/AoE_Damage.hide();
-    $AoE.hide();
+    for aoe in _aoes:
+        aoe.get_node("AoE_Damage").hide();
+        aoe.hide();
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
-func _on_behavior_preparing_attack() -> void:
-    _randomize_AoE_position()
-
+func _on_behavior_preparing_attack(aoe: Area2D, cast_time: float) -> void:
     _animation.play("crouch")
 
-    if $AoE.position.x != 0:
-        _animation.flip_h = $AoE.position.x < 0
+    if aoe.position.x != 0:
+        _animation.flip_h = aoe.position.x < 0
 
-    $AoE/AoE_Sprite.texture.gradient.set_color(0, Color(1, 1, 0))
-    $AoE.show()
+    aoe.get_node("AoE_Sprite").texture.gradient.set_color(0, Color(1, 1, 0))
+    aoe.show()
+
+    var timer = Timer.new()
+    timer.one_shot = true
+    add_child(timer)
+    timer.start(cast_time)
+
+    _aoes.get_or_add(aoe, [timer, false])
+    add_child(aoe)
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
-func _on_behavior_attacking() -> void:
+func _on_behavior_attacking(aoe: Area2D, atk_time: float) -> void:
     _animation.play("attack")
 
-    $AoE/AoE_Sprite.texture.gradient.set_color(0, Color(1, 0, 0))
-    $AoE/AoE_Damage.show();
-    for hit_minion in $AoE.get_overlapping_bodies():
-        Signals.minion_hurt.emit(hit_minion, self)
+    _aoes[aoe][0].start(atk_time)
+    _aoes[aoe][1] = true
 
+    aoe.get_node("AoE_Sprite").texture.gradient.set_color(0, Color(1, 1, 1))
+    aoe.get_node("AoE_Damage").show();
+
+    for hit_minion in aoe.get_overlapping_bodies():
+        Signals.minion_hurt.emit(hit_minion, self)
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------
 func _change_mob_color(color: Color) -> void:
     _animation.modulate = color
-
 #end
-#-----------------------------------------------------------------------------------------------------------------------
-func _randomize_AoE_position() -> void:
-    var isHorizontal = randi() % 2
-    var value = aoe_range * ((randi() & 2) - 1)
 
-    if isHorizontal:
-        $AoE.rotation_degrees = 0
-        $AoE.position.x = 0
-        $AoE.position.y = value
-    else:
-        $AoE.rotation_degrees = 90
-        $AoE.position.x = value
-        $AoE.position.y = 0
+#-----------------------------------------------------------------------------------------------------------------------
+func _update_AoE_state() -> void:
+    for aoe in _aoes:
+        if _aoes[aoe][0].is_stopped() && _aoes[aoe][1]:
+            remove_child(_aoes[aoe][0])
+            _aoes.erase(aoe)
+            remove_child(aoe)
+        elif !_aoes[aoe][0].is_stopped() && !_aoes[aoe][1]:
+            var completion = _aoes[aoe][0].time_left / _aoes[aoe][0].wait_time
+            aoe.get_node("AoE_Sprite").texture.gradient.set_color(0, Color(1, completion, 0))
 #end
 
 #-----------------------------------------------------------------------------------------------------------------------

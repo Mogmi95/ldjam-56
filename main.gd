@@ -16,7 +16,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    if  current_level_sc != null:
+    if current_level_sc != null:
         _update_hud()
         if $CameraCollision.position.x >= (x_offset + current_level_sc.loading_checkpoint):
             _change_level()
@@ -40,7 +40,7 @@ func new_game() -> void:
 #end
 
 func game_over() -> void:
-    $CameraCollision.should_camera_move = false
+    $CameraCollision.where_to = 0
     $HUD.show_game_over()
 
 # Transitions between levels should be handled here
