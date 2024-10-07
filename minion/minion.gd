@@ -104,6 +104,7 @@ func _notify_death():
 func force_walk():
     forced_walk = true
     sprite.animation = "walk"
+    sprite.frame_progress = randf()
 
 func _on_attack_timer_timeout() -> void:
     if state == State.DEAD:
